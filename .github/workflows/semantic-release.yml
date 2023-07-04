@@ -22,7 +22,7 @@ jobs:
       - name: Run Release Script
         id: release_script
         run: |
-          ./release.sh
+          ./semantic-release.sh
           echo "Dirs: ${{ steps.release_script.outputs.dirs }}"
           echo "Has Tags: ${{ steps.release_script.outputs.has_tags }}"
           echo "Tag Format: ${{ steps.release_script.outputs.tag_format }}"
