@@ -29,31 +29,33 @@ jobs:
       - name: Read changed directories from file
         id: read_changed_dirs
         run: |
-          DIRS=$(cat changed_files.txt | xargs -I {} dirname {} | sort -u)
-          echo "DIRS=$DIRS" >> $GITHUB_ENV
+          cat changed_files.txt | xargs -I {} dirname {} | sort -u | awk '{print "DIR_"NR"="$0}' >> $GITHUB_ENV
 
       # Update the tag format to include the name of the directory
       - name: Update tag format
         id: update_tag_format
         run: |
-          APP_NAME=$(echo "${{ env.DIRS }}" | awk '{print tolower($0)}')
-          echo "${APP_NAME}-v\${version}" > tag_format.txt
+          APP_DIRS=""
+          for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
+            APP_NAME=$(echo "$i" | awk '{print tolower($0)}')
+            echo "${APP_NAME}-v\${version}" >> tag_format.txt
+          done
 
       - name: Read tag format from file
         id: read_tag_format
         run: |
-          echo "TAG_FORMAT=$(cat tag_format.txt)" >> $GITHUB_ENV
+          cat tag_format.txt | xargs echo TAG_FORMAT >> $GITHUB_ENV
 
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
         id: changelog_path
         run: |
-          APP_DIRS="${{ env.DIRS }}"
-          while IFS= read -r dir; do
-            if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              echo "CHANGELOG_PATH=${dir}/CHANGELOG.md" >> $GITHUB_ENV
+          APP_DIRS=""
+          for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
+            if [[ -f "$i/CHANGELOG.md" ]]; then
+              echo "CHANGELOG_PATH=$i/CHANGELOG.md" >> $GITHUB_ENV
             fi
-          done <<< "$APP_DIRS"
+          done
 
       - name: Read CHANGELOG.md path from file
         id: read_changelog_path
@@ -85,7 +87,7 @@ jobs:
             [
               'master'
             ]
-        if: env.CHANGELOG_PATH != ''
+        if: steps.read_changelog_path.outputs.CHANGELOG_PATH != ''
 
       - name: Semantic Release Output Summary
         id: semantic_summary
