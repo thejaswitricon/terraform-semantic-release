@@ -23,7 +23,7 @@ jobs:
       - name: Get folder paths of changed files
         id: changed_dirs
         run: |
-          dirs=$(bash semantic-release.sh)
+          dirs=$(GITHUB_SHA=$GITHUB_SHA bash path_script.sh)
           echo "::set-output name=dirs::$dirs"
 
       # Check if there are any tags available
