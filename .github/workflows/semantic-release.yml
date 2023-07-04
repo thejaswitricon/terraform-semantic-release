@@ -24,12 +24,12 @@ jobs:
       - name: Get changed directories
         id: changed_dirs
         run: |
-          echo "$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')" > changed_dirs.txt
+          echo "$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})" > changed_files.txt
 
       - name: Read changed directories from file
         id: read_changed_dirs
         run: |
-          DIRS=$(cat changed_dirs.txt | awk -F/ 'BEGIN{OFS=FS} {NF--} 1' | tr '\n' ',')
+          DIRS=$(cat changed_files.txt | xargs -I {} dirname {} | sort -u)
           echo "DIRS=$DIRS" >> $GITHUB_ENV
 
       # Update the tag format to include the name of the directory
