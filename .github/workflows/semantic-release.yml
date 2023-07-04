@@ -38,13 +38,13 @@ jobs:
           APP_DIRS=""
           for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
             APP_NAME=$(echo "$i" | awk '{print tolower($0)}')
-            echo "${APP_NAME}-v\${version}" >> tag_format.txt
+            echo "${APP_NAME}-v\${{ env.VERSION }}" >> tag_format.txt
           done
 
       - name: Read tag format from file
         id: read_tag_format
         run: |
-          cat tag_format.txt | xargs echo TAG_FORMAT >> $GITHUB_ENV
+          echo "::set-output name=TAG_FORMAT::$(cat tag_format.txt)"
 
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
@@ -53,14 +53,9 @@ jobs:
           APP_DIRS=""
           for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
             if [[ -f "$i/CHANGELOG.md" ]]; then
-              echo "CHANGELOG_PATH=$i/CHANGELOG.md" >> $GITHUB_ENV
+              echo "::set-output name=CHANGELOG_PATH::$i/CHANGELOG.md"
             fi
           done
-
-      - name: Read CHANGELOG.md path from file
-        id: read_changelog_path
-        run: |
-          echo "::set-output name=CHANGELOG_PATH::${{ env.CHANGELOG_PATH }}"
 
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
@@ -68,18 +63,17 @@ jobs:
         id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
-          TAG_FORMAT: ${{ env.TAG_FORMAT }}
-          CHANGELOG_PATH: ${{ env.CHANGELOG_PATH }}
         with:
+          tag_format: ${{ steps.read_tag_format.outputs.TAG_FORMAT }}
           additional_packages: |
             ['@semantic-release/changelog', '@semantic-release/git']
           plugins: |
             [
               '@semantic-release/commit-analyzer',
               '@semantic-release/release-notes-generator',
-              ['@semantic-release/changelog', { "changelogFile": "${{ env.CHANGELOG_PATH }}" }],
+              ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.CHANGELOG_PATH }}" }],
               '@semantic-release/github',
-              ['@semantic-release/git', { "assets": ["${{ env.CHANGELOG_PATH }}"] }]
+              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.CHANGELOG_PATH }}"] }]
             ]
           # Specify default branches to add support for the `main` branch
           # which semantic-release doesn't have as a default yet.
@@ -87,7 +81,7 @@ jobs:
             [
               'master'
             ]
-        if: steps.read_changelog_path.outputs.CHANGELOG_PATH != ''
+        if: steps.changelog_path.outputs.CHANGELOG_PATH != ''
 
       - name: Semantic Release Output Summary
         id: semantic_summary
