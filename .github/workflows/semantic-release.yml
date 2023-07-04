@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-    - 'modules/**'
+      - 'modules/**'
 permissions: write-all
 
 jobs:
@@ -19,57 +19,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Get the name of the directory that was changed
-      - name: Get changed directories
-        id: changed_dirs
+      # Run the shell script to perform operations and get outputs
+      - name: Run Semantic Release Script
+        id: semantic_script
         run: |
-          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')"
+          chmod +x semantic-release.sh
+          source ./semantic-release.sh
 
-      # Check if there are any tags available
-      - name: Check for tags
-        id: check_tags
-        run: |
-          if [[ -z $(git tag -l) ]]; then
-            echo "::set-output name=has_tags::false"
-          else
-            echo "::set-output name=has_tags::true"
-          fi
-
-      # Update the tag format to include the name of the directory
-      - name: Update tag format
-        id: update_tag_format
-        run: |
-          APP_NAME=$(echo "${{ steps.changed_dirs.outputs.dirs }}" | awk '{print tolower($0)}')
-          echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-
-      # Determine the path to the CHANGELOG.md file dynamically
-      - name: Determine CHANGELOG.md path
-        id: changelog_path
-        run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          while IFS= read -r dir; do
-            if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              echo "::set-output name=path::${dir}/CHANGELOG.md"
-            fi
-          done <<< "$APP_DIRS"
-
-      # Run semantic release only if CHANGELOG.md path is available
+      # Use the outputs from the script in the semantic release step
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
         id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
         with:
-          tag_format: '${{ steps.update_tag_format.outputs.tag_format }}'
+          tag_format: '${{ steps.semantic_script.outputs.tag_format }}'
           additional_packages: |
             ['@semantic-release/changelog', '@semantic-release/git']
           plugins: |
             [
               '@semantic-release/commit-analyzer',
               '@semantic-release/release-notes-generator',
-              ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.path }}" }],
+              ['@semantic-release/changelog', { "changelogFile": "${{ steps.semantic_script.outputs.changelog_path }}" }],
               '@semantic-release/github',
-              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
+              ['@semantic-release/git', { "assets": ["${{ steps.semantic_script.outputs.changelog_path }}"] }]
             ]
           # Specify default branches to add support for the `main` branch
           # which semantic-release doesn't have as a default yet.
@@ -77,7 +50,7 @@ jobs:
             [
               'master'
             ]
-        if: steps.changelog_path.outputs.path != ''
+        if: steps.semantic_script.outputs.changelog_path != ''
 
       - name: Semantic Release Output Summary
         id: semantic_summary
