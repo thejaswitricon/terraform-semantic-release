@@ -5,17 +5,18 @@ on:
     branches:
       - master
     paths:
-    - 'modules/**'
+      - 'modules/**'
+
 permissions: write-all
 
 jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        id: checkout
         with:
           fetch-depth: 0
 
@@ -23,25 +24,40 @@ jobs:
       - name: Get changed directories
         id: changed_dirs
         run: |
-          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')"
+          echo "$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')" > changed_dirs.txt
+
+      - name: Read changed directories from file
+        id: read_changed_dirs
+        run: |
+          echo "::set-output name=dirs::$(cat changed_dirs.txt)"
 
       # Update the tag format to include the name of the directory
       - name: Update tag format
         id: update_tag_format
         run: |
-          APP_NAME=$(echo "${{ steps.changed_dirs.outputs.dirs }}" | awk '{print tolower($0)}')
-          echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
+          APP_NAME=$(echo "${{ steps.read_changed_dirs.outputs.dirs }}" | awk '{print tolower($0)}')
+          echo "${APP_NAME}-v\${version}" > tag_format.txt
+
+      - name: Read tag format from file
+        id: read_tag_format
+        run: |
+          echo "::set-output name=tag_format::$(cat tag_format.txt)"
 
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
         id: changelog_path
         run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          APP_DIRS="${{ steps.read_changed_dirs.outputs.dirs }}"
           while IFS= read -r dir; do
             if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              echo "::set-output name=path::${dir}/CHANGELOG.md"
+              echo "${dir}/CHANGELOG.md" > changelog_path.txt
             fi
           done <<< "$APP_DIRS"
+
+      - name: Read CHANGELOG.md path from file
+        id: read_changelog_path
+        run: |
+          echo "::set-output name=path::$(cat changelog_path.txt)"
 
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
@@ -50,16 +66,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
         with:
-          tag_format: '${{ steps.update_tag_format.outputs.tag_format }}'
+          tag_format: '${{ steps.read_tag_format.outputs.tag_format }}'
           additional_packages: |
             ['@semantic-release/changelog', '@semantic-release/git']
           plugins: |
             [
               '@semantic-release/commit-analyzer',
               '@semantic-release/release-notes-generator',
-              ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.path }}" }],
+              ['@semantic-release/changelog', { "changelogFile": "${{ steps.read_changelog_path.outputs.path }}" }],
               '@semantic-release/github',
-              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
+              ['@semantic-release/git', { "assets": ["${{ steps.read_changelog_path.outputs.path }}"] }]
             ]
           # Specify default branches to add support for the `main` branch
           # which semantic-release doesn't have as a default yet.
@@ -67,7 +83,7 @@ jobs:
             [
               'master'
             ]
-        if: steps.changelog_path.outputs.path != ''
+        if: steps.read_changelog_path.outputs.path != ''
 
       - name: Semantic Release Output Summary
         id: semantic_summary
@@ -77,6 +93,7 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
+
 
 
 # name: Semantic Release for Apps
