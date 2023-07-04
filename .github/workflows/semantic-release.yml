@@ -29,7 +29,8 @@ jobs:
       - name: Read changed directories from file
         id: read_changed_dirs
         run: |
-          echo "DIRS=$(cat changed_dirs.txt)" >> $GITHUB_ENV
+          DIRS=$(cat changed_dirs.txt | awk -F/ 'BEGIN{OFS=FS} {NF--} 1' | tr '\n' ',')
+          echo "DIRS=$DIRS" >> $GITHUB_ENV
 
       # Update the tag format to include the name of the directory
       - name: Update tag format
