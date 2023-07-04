@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'modules/**'
+    - 'modules/**'
 permissions: write-all
 
 jobs:
@@ -19,22 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Run your modified shell script to get the folder paths
-      - name: Get folder paths of changed files
+      # Get the folder path of changed file
+      - name: Get changed directories
         id: changed_dirs
         run: |
-          dirs=$(GITHUB_SHA=$GITHUB_SHA bash semantic-release.sh)
-          echo "::set-output name=dirs::$dirs"
-
-      # Check if there are any tags available
-      - name: Check for tags
-        id: check_tags
-        run: |
-          if [[ -z $(git tag -l) ]]; then
-            echo "::set-output name=has_tags::false"
-          else
-            echo "::set-output name=has_tags::true"
-          fi
+          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')"
 
       # Update the tag format to include the name of the directory
       - name: Update tag format
@@ -86,9 +75,8 @@ jobs:
           echo "### Semantic Version = ${{ steps.semantic.outputs.release-version }}\`" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`"
-
-
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
 
 
 # name: Semantic Release for Apps
