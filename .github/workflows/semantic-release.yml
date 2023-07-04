@@ -29,7 +29,7 @@ jobs:
       - name: Read changed directories from file
         id: read_changed_dirs
         run: |
-          echo "::set-env name=DIRS::$(cat changed_dirs.txt)"
+          echo "DIRS=$(cat changed_dirs.txt)" >> $GITHUB_ENV
 
       # Update the tag format to include the name of the directory
       - name: Update tag format
@@ -41,7 +41,7 @@ jobs:
       - name: Read tag format from file
         id: read_tag_format
         run: |
-          echo "::set-env name=TAG_FORMAT::$(cat tag_format.txt)"
+          echo "TAG_FORMAT=$(cat tag_format.txt)" >> $GITHUB_ENV
 
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
@@ -50,14 +50,14 @@ jobs:
           APP_DIRS="${{ env.DIRS }}"
           while IFS= read -r dir; do
             if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              echo "${dir}/CHANGELOG.md" > changelog_path.txt
+              echo "CHANGELOG_PATH=${dir}/CHANGELOG.md" >> $GITHUB_ENV
             fi
           done <<< "$APP_DIRS"
 
       - name: Read CHANGELOG.md path from file
         id: read_changelog_path
         run: |
-          echo "::set-env name=CHANGELOG_PATH::$(cat changelog_path.txt)"
+          echo "::set-output name=CHANGELOG_PATH::${{ env.CHANGELOG_PATH }}"
 
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
@@ -91,6 +91,9 @@ jobs:
         run: |
           echo "### Semantic Version = ${{ steps.semantic.outputs.release-version }}\`" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
 
 
 
