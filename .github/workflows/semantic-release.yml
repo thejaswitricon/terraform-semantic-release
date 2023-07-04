@@ -23,7 +23,7 @@ jobs:
       - name: Get folder paths of changed files
         id: changed_dirs
         run: |
-          dirs=$(bash path_script.sh)
+          dirs=$(bash semantic-release.sh)
           echo "::set-output name=dirs::$dirs"
 
       # Check if there are any tags available
