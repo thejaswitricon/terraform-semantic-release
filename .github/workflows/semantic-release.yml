@@ -37,11 +37,17 @@ jobs:
         id: changelog_path
         run: |
           APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          while IFS= read -r dir; do
-            if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              echo "::set-output name=path::${dir}/CHANGELOG.md"
-            fi
-          done <<< "$APP_DIRS"
+          ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
+          if [[ -n "$ROOT_CHANGED" ]]; then
+            echo "::set-output name=path::./CHANGELOG.md"
+          else
+            while IFS= read -r dir; do
+              if [[ -f "${dir}/CHANGELOG.md" ]]; then
+                echo "::set-output name=path::${dir}/CHANGELOG.md"
+                exit 0  # Exit loop after finding the first matching changelog file
+              fi
+            done <<< "$APP_DIRS"
+          fi
 
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
