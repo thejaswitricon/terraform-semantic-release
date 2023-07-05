@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.1.0...v1.2.0) (2023-07-05)
+
+
+### Features
+
+* **root:** initialize a demo folder ([3c6b857](https://github.com/thejaswitricon/terraform-semantic-release/commit/3c6b8578972d0de82899d9b0dd0a4f3decb62d6a))
+* **root:** initialize a demo folder ([a8cb06a](https://github.com/thejaswitricon/terraform-semantic-release/commit/a8cb06ad0feb079ef21513c4bdbab08c555fee90))
+* **root:** initialize a demo folder ([b07b627](https://github.com/thejaswitricon/terraform-semantic-release/commit/b07b6279bc5e1b982b06f18f31baa791ae31cd9b))
+* **root:** initialize a demo folder ([372d820](https://github.com/thejaswitricon/terraform-semantic-release/commit/372d820a66418be43f2e8503e48a27ed91f1c60c))
+* **root:** initialize a demo folder ([ec41f96](https://github.com/thejaswitricon/terraform-semantic-release/commit/ec41f968fb537a945a8fdd9d1692317e746ffb8e))
+* **root:** initialize a demo folder ([22b19cc](https://github.com/thejaswitricon/terraform-semantic-release/commit/22b19ccc392d4b9df83530c923ed55da446a2707))
+* **root:** initialize a demo folder ([a7aaea8](https://github.com/thejaswitricon/terraform-semantic-release/commit/a7aaea89249cd1d0a02d2ece4af29fbc24df26f9))
+
 # [1.1.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.0.1...v1.1.0) (2023-07-05)
 
 
