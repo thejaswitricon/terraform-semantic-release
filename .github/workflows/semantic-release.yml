@@ -24,7 +24,10 @@ jobs:
         id: changed_dirs
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS="/"}{NF--}1' | sort -u > changed_dirs.txt
-          echo "::set-output name=dirs::$(cat changed_dirs.txt)"
+          changed_files=$(cat changed_dirs.txt)
+          echo "Changed files: $changed_files"
+          echo "::set-output name=dirs::$changed_files"
+
 
       # Check if there are any tags available
       - name: Check for tags
