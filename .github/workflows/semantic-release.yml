@@ -55,8 +55,9 @@ jobs:
                 -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
                 ghcr.io/codfish/semantic-release-action:v2 \
                 --tag-format "$TAG_FORMAT" \
-                --additional-packages='["@semantic-release/changelog", "@semantic-release/git"]' \
-                --plugins='["@semantic-release/commit-analyzer", "@semantic-release/release-notes-generator", ["@semantic-release/changelog", { "changelogFile": "$CHANGELOG_PATH" }], "@semantic-release/github", ["@semantic-release/git", { "assets": ["$CHANGELOG_PATH"] }]]'
+                --plugins='["@semantic-release/changelog", "@semantic-release/github"]' \
+                --success-comment='@semantic-release/github-success-comment' \
+                --fail-comment='@semantic-release/github-fail-comment'
             fi
           done <<< "$APP_DIRS"
 
@@ -68,6 +69,7 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
+
 
 
 
