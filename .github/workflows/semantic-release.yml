@@ -23,7 +23,29 @@ jobs:
         id: changed_dirs
         run: |
           FILE_PATHS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} { if (NF > 1) { NF--; print } else { print $0 } }')
-          echo "::set-output name=dirs::${FILE_PATHS}"
+          ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
+          CHANGELOG_FOUND=false
+      
+          if [[ -n "$ROOT_CHANGED" ]]; then
+            # Change in the root directory, output empty string
+            echo "::set-output name=dirs::"
+          else
+            while IFS= read -r dir; do
+              if [[ -f "${dir}/CHANGELOG.md" ]]; then
+                # Change in a subfolder with CHANGELOG.md, output folder path
+                echo "::set-output name=dirs::${dir}"
+                CHANGELOG_FOUND=true
+                break
+              fi
+            done <<< "$FILE_PATHS"
+      
+            if [[ $CHANGELOG_FOUND == "false" ]]; then
+              # No CHANGELOG.md found in any changed directory, abort the workflow
+              echo "No CHANGELOG.md file found in the changed directories. Aborting the workflow."
+              exit 1
+            fi
+          fi
+        
         
       # Update the tag format to include the name of the directory
       - name: Update tag format
