@@ -27,6 +27,21 @@ jobs:
           CHANGED_DIRS_JSON=$(echo "$CHANGED_DIRS" | jq -R . | jq -s .)
           echo "Changed directories: $CHANGED_DIRS"
           echo "::set-output name=dirs::$CHANGED_DIRS_JSON"
+
+      - name: Check for tags
+        id: check_tags
+        run: |
+          CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          for dir in $CHANGED_DIRS; do
+            if [[ -n $(git -C "$dir" tag -l) ]]; then
+              echo "Tags found for $dir"
+              echo "::set-output name=has_tags::true"
+              exit 0
+            fi
+          done
+          echo "No tags found for any directory"
+          echo "::set-output name=has_tags::false"
+        
         
       
 
