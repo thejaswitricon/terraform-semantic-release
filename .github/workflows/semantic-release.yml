@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    # paths:
+    # - 'modules/**'
 permissions: write-all
 
 jobs:
@@ -17,27 +19,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Determine if changes exist in the root directory
-      - name: Check for changes in root directory
-        id: root_changes
-        run: |
-          ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
-          if [[ -n "$ROOT_CHANGED" ]]; then
-            echo "::set-output name=changes::true"
-          else
-            echo "::set-output name=changes::false"
-          fi
-
-      # Get the folder path of changed file
       - name: Get changed directories
         id: changed_dirs
         run: |
-          if [[ "${{ steps.root_changes.outputs.changes }}" == "true" ]]; then
-            echo "root"
-          else
-            git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--'
-          fi
-
+          FILE_PATHS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} { if (NF > 1) { NF--; print } else { print $0 } }')
+          echo "::set-output name=dirs::${FILE_PATHS}"
+        
       # Update the tag format to include the name of the directory
       - name: Update tag format
         id: update_tag_format
@@ -90,7 +77,6 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
-
         
 
       # Run semantic release for each directory if CHANGELOG.md path is available
