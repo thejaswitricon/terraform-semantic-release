@@ -39,19 +39,19 @@ jobs:
           fi
 
       # Determine the paths to the CHANGELOG.md files for all changed directories
-      - name: Determine CHANGELOG.md paths
-        id: changelog_paths
+      - name: Update tag format
+        id: update_tag_format
         run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          paths=""
-          while IFS= read -r dir; do
-            if [[ -f "${dir}/CHANGELOG.md" ]]; then
-              paths="${paths}${dir}/CHANGELOG.md,"
-            fi
-          done <<< "$APP_DIRS"
-          # Remove trailing comma from paths
-          paths="${paths%,}"
-          echo "::set-output name=paths::$paths"
+          changed_dirs="${{ steps.changed_dirs.outputs.dirs }}"
+          tags=()
+          for dir in $changed_dirs; do
+            app_name=$(echo "$dir" | awk '{print tolower($0)}')
+            tag_format="${app_name}-v\${version}"
+            tags+=("$tag_format")
+          done
+          echo "Updated tags: ${tags[@]}"
+          echo "::set-output name=tag_formats::${tags[@]}"
+
 
       # Run semantic release for each directory if CHANGELOG.md path is available
       # - name: Semantic Release
