@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.0.0...v1.0.1) (2023-07-05)
+
+
+### Bug Fixes
+
+* **root:** initialize repo ([aa29b91](https://github.com/thejaswitricon/terraform-semantic-release/commit/aa29b91b30ad74d66414143a666a7d225b9b8a71))
+* **root:** initialize repo ([6ffa3d5](https://github.com/thejaswitricon/terraform-semantic-release/commit/6ffa3d5a31d4d6274345d56748ed4d158af31ec5))
+* **root:** initialize repo ([2797755](https://github.com/thejaswitricon/terraform-semantic-release/commit/27977553307fa6c152b1accb88702dff032e3977))
+
 # 1.0.0 (2023-07-05)
 
 
