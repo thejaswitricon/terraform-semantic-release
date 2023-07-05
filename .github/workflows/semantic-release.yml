@@ -36,7 +36,8 @@ jobs:
           else
             APP_NAME=$(echo "$CHANGED_DIRS" | awk '{print tolower($0)}')
             echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-          fi
+          fi || true
+
 
 
       # Determine the path to the CHANGELOG.md file dynamically
