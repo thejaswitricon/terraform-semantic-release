@@ -31,9 +31,10 @@ jobs:
       - name: Check for tags
         id: check_tags
         run: |
-          CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          CHANGED_DIRS_JSON='${{ steps.changed_dirs.outputs.dirs }}'
           HAS_TAGS=false
       
+          CHANGED_DIRS=$(echo "$CHANGED_DIRS_JSON" | jq -r '.[]')
           IFS=$'\n' # Set the Internal Field Separator (IFS) to handle directory paths with spaces correctly
           for dir in $CHANGED_DIRS; do
             if [[ -n $(git -C "$dir" tag -l) ]]; then
