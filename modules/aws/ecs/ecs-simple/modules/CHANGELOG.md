@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.1.1...modules/aws/ecs/ecs-simple/modules-v1.2.0) (2023-07-05)
+
+
+### Features
+
+* **root:** initialize a demo folder ([6d2af92](https://github.com/thejaswitricon/terraform-semantic-release/commit/6d2af926a0152c93ea0efcd9faf41dd635ca3c04))
+* **root:** initialize a demo folder ([0c9ce8c](https://github.com/thejaswitricon/terraform-semantic-release/commit/0c9ce8caaaae7d9575e1c14b66635da0616cac43))
+* **root:** initialize a demo folder ([a2b36a3](https://github.com/thejaswitricon/terraform-semantic-release/commit/a2b36a314c8a60cc431b11110766d09f5d128b96))
+* **root:** initialize a demo folder ([6bc2b95](https://github.com/thejaswitricon/terraform-semantic-release/commit/6bc2b95674ed588b4335f1a924c187ac57c2617c))
+* **root:** initialize a demo folder ([4f45e59](https://github.com/thejaswitricon/terraform-semantic-release/commit/4f45e597b431ed25b8df6e1d559fc31445858c21))
+* **root:** initialize a demo folder ([85d34ca](https://github.com/thejaswitricon/terraform-semantic-release/commit/85d34cadb3946adc907827524c0da69608fa77d5))
+* **root:** initialize new folder ecs-forgate ([9a379ed](https://github.com/thejaswitricon/terraform-semantic-release/commit/9a379ed49963480f67f9ea8636b1402c84f68f99))
+
 ## [1.1.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.1.0...modules/aws/ecs/ecs-simple/modules-v1.1.1) (2023-07-05)
 
 
