@@ -24,8 +24,10 @@ jobs:
         id: changed_dirs
         run: |
           CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--' | sort | uniq)
+          CHANGED_DIRS_JSON=$(echo "$CHANGED_DIRS" | jq -R . | jq -s .)
           echo "Changed directories: $CHANGED_DIRS"
-          echo "::set-output name=dirs::$CHANGED_DIRS"
+          echo "::set-output name=dirs::$CHANGED_DIRS_JSON"
+        
       
 
 
