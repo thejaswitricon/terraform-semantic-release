@@ -6,7 +6,6 @@ on:
       - master
     paths:
       - 'modules/**'
-
 permissions: write-all
 
 jobs:
@@ -20,35 +19,77 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Get the list of changed directories
       - name: Get changed directories
         id: changed_dirs
         run: |
-          CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--' | sort | uniq)
-          CHANGED_DIRS_JSON=$(echo "$CHANGED_DIRS" | jq -R . | jq -s .)
-          echo "Changed directories: $CHANGED_DIRS"
-          echo "::set-output name=dirs::$CHANGED_DIRS_JSON"
+          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')"
 
+      # Check if there are any tags available
       - name: Check for tags
         id: check_tags
         run: |
-          CHANGED_DIRS_JSON='${{ steps.changed_dirs.outputs.dirs }}'
-          HAS_TAGS=false
-      
-          CHANGED_DIRS=$(echo "$CHANGED_DIRS_JSON" | jq -r '.[]')
-          IFS=$'\n' # Set the Internal Field Separator (IFS) to handle directory paths with spaces correctly
-          for dir in $CHANGED_DIRS; do
-            if [[ -n $(git -C "$dir" tag -l) ]]; then
-              echo "Tags found for $dir"
-              HAS_TAGS=true
-              break
-            fi
-          done
-      
-          echo "::set-output name=has_tags::$HAS_TAGS"
-        
-        
-      
+          if [[ -z $(git tag -l) ]]; then
+            echo "::set-output name=has_tags::false"
+          else
+            echo "::set-output name=has_tags::true"
+          fi
 
+      # Loop over the changed directories
+      - name: Loop over directories
+        id: loop_over_dirs
+        run: |
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          IFS=$'\n' read -rd '' -a dirs <<<"$APP_DIRS"
+          for dir in "${dirs[@]}"; do
+            echo "::set-output name=dir::$dir"
+          done
+
+      # Update the tag format to include the name of the directory
+      - name: Update tag format
+        id: update_tag_format
+        run: |
+          APP_NAME=$(echo "${{ steps.loop_over_dirs.outputs.dir }}" | awk '{print tolower($0)}')
+          echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
+
+      # Determine the path to the CHANGELOG.md file dynamically for each directory
+      - name: Determine CHANGELOG.md path
+        id: changelog_path
+        run: |
+          DIR="${{ steps.loop_over_dirs.outputs.dir }}"
+          if [[ -f "${DIR}/CHANGELOG.md" ]]; then
+            echo "::set-output name=path::${DIR}/CHANGELOG.md"
+          fi
+
+      # Run semantic release for each directory if CHANGELOG.md path is available
+      - name: Semantic Release
+        uses: docker://ghcr.io/codfish/semantic-release-action:v2
+        id: semantic
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+        with:
+          tag_format: '${{ steps.update_tag_format.outputs.tag_format }}'
+          additional_packages: |
+            ['@semantic-release/changelog', '@semantic-release/git']
+          plugins: |
+            [
+              '@semantic-release/commit-analyzer',
+              '@semantic-release/release-notes-generator',
+              ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.path }}" }],
+              '@semantic-release/github',
+              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
+            ]
+          # Specify default branches to add support for the `main` branch
+          # which semantic-release doesn't have as a default yet.
+          branches: |
+            [
+              'master'
+            ]
+        if: steps.changelog_path.outputs.path != ''
+
+      - name: Semantic Release Output Summary
+        id: semantic_summary
+        run: |
 
 
 
