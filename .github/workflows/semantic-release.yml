@@ -29,14 +29,8 @@ jobs:
       - name: Update tag format
         id: update_tag_format
         run: |
-          CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
-          if [[ -n "$ROOT_CHANGED" ]]; then
-            echo "::set-output name=tag_format::"
-          else
-            APP_NAME=$(echo "$CHANGED_DIRS" | awk '{print tolower($0)}')
-            echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-          fi || true
+          APP_NAME=$(echo "${{ steps.changed_dirs.outputs.dirs }}" | awk '{print tolower($0)}')
+          echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
 
 
       # Determine the path to the CHANGELOG.md file dynamically
