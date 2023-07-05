@@ -39,7 +39,6 @@ jobs:
           fi || true
 
 
-
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
         id: changelog_path
