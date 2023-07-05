@@ -54,7 +54,9 @@ jobs:
                 exit 0  # Exit loop after finding the first matching changelog file
               fi
             done <<< "$APP_DIRS"
+            exit 0  # Skip semantic release if no changelog file found
           fi
+
 
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
@@ -91,7 +93,7 @@ jobs:
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
         
-        
+
 
       # Run semantic release for each directory if CHANGELOG.md path is available
       # - name: Semantic Release
