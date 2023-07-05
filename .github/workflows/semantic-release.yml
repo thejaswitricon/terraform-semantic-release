@@ -32,15 +32,18 @@ jobs:
         id: check_tags
         run: |
           CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          HAS_TAGS=false
+      
+          IFS=$'\n' # Set the Internal Field Separator (IFS) to handle directory paths with spaces correctly
           for dir in $CHANGED_DIRS; do
             if [[ -n $(git -C "$dir" tag -l) ]]; then
               echo "Tags found for $dir"
-              echo "::set-output name=has_tags::true"
-              exit 0
+              HAS_TAGS=true
+              break
             fi
           done
-          echo "No tags found for any directory"
-          echo "::set-output name=has_tags::false"
+      
+          echo "::set-output name=has_tags::$HAS_TAGS"
         
         
       
