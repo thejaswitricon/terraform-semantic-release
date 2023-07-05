@@ -71,18 +71,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
         run: |
-          changed_dirs="${{ steps.changed_dirs.outputs.dirs }}"
-          changelog_paths="${{ steps.changelog_path.outputs.paths }}"
-          IFS=' ' read -r -a changed_dirs_array <<< "$changed_dirs"
+          tag_formats="${{ steps.update_tag_formats.outputs.tag_formats }}"
+          changelog_paths="${{ steps.changelog_paths.outputs.paths }}"
+          IFS=' ' read -r -a tag_formats_array <<< "$tag_formats"
           IFS=' ' read -r -a changelog_paths_array <<< "$changelog_paths"
       
-          for ((i=0; i<${#changed_dirs_array[@]}; i++)); do
-            changed_dir="${changed_dirs_array[$i]}"
+          for ((i=0; i<${#tag_formats_array[@]}; i++)); do
+            tag_format="${tag_formats_array[$i]}"
             changelog_path="${changelog_paths_array[$i]}"
             
-            echo "Performing semantic release for ${changed_dir} - ${changelog_path}"
-            docker run --rm -v $(pwd):/app -w /app ghcr.io/codfish/semantic-release-action:v2 sh -c "semantic-release --tag-format='${changed_dir}/v\${version}' --plugins=@semantic-release/changelog,@semantic-release/git --changelog-file='${changelog_path}'"
-          done
+            echo "Performing semantic release for ${tag_format} - ${changelog_path}"
+            docker run --rm -v $(pwd):/app -w /app ghcr.io/codfish/semantic-release-action:v2 sh -c "semantic-release --tag-format='${tag_format}' --plugins=@semantic-release/changelog,@semantic-release/git --changelog-file='${changelog_path}'"
+            done
+        
         
         
 
