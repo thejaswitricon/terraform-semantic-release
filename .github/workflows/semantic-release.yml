@@ -25,7 +25,7 @@ jobs:
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS="/"} {if ($1 == "modules") { $NF=""; print $0 }}' | sort -u > changed_dirs.txt
           changed_files=$(cat changed_dirs.txt)
-          echo "Changed files inside 'modules' folder: $changed_files"
+          echo "Changed folder: $changed_files"
           echo "::set-output name=dirs::$changed_files"
 
       # Check if there are any tags available
@@ -52,6 +52,20 @@ jobs:
           echo "Updated tags: ${tags[@]}"
           echo "::set-output name=tag_formats::${tags[@]}"
 
+      - name: Determine CHANGELOG.md path
+        id: changelog_path
+        run: |
+          changed_dirs=$(cat changed_dirs.txt)
+          changelog_paths=()
+          for dir in $changed_dirs; do
+            changelog_file="${dir}/CHANGELOG.md"
+            if [[ -f "$changelog_file" ]]; then
+              changelog_paths+=("$changelog_file")
+            fi
+          done
+          echo "CHANGELOG.md paths: ${changelog_paths[@]}"
+          echo "::set-output name=paths::${changelog_paths[@]}"
+        
 
       # Run semantic release for each directory if CHANGELOG.md path is available
       # - name: Semantic Release
