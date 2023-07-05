@@ -29,6 +29,7 @@ jobs:
       - name: Update tag format
         id: update_tag_format
         run: |
+          CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
           ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
           if [[ -n "$ROOT_CHANGED" ]]; then
             echo "::set-output name=tag_format::"
@@ -89,7 +90,6 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
-        
         
 
       # Run semantic release for each directory if CHANGELOG.md path is available
