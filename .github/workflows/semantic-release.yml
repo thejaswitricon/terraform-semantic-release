@@ -6,82 +6,58 @@ on:
       - master
     paths:
       - 'modules/**'
-
 permissions: write-all
 
 jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        id: checkout
         with:
           fetch-depth: 0
 
-      # Get the folder path of changed file
+      # Get the folder path of changed files
       - name: Get changed directories
         id: changed_dirs
         run: |
-          echo "$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})" > changed_files.txt
+          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--' | sort | uniq)"
 
-      - name: Read changed directories from file
-        id: read_changed_dirs
+      # Update the tag format and determine the path to the CHANGELOG.md file for each changed directory
+      - name: Update tag format and determine CHANGELOG.md path
+        id: update_tag_changelog
         run: |
-          cat changed_files.txt | xargs -I {} dirname {} | sort -u | awk '{print "DIR_"NR"="$0}' >> $GITHUB_ENV
-
-      # Update the tag format to include the name of the directory
-      - name: Update tag format
-        id: update_tag_format
-        run: |
-          APP_DIRS=""
-          for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
-            APP_NAME=$(echo "$i" | awk '{print tolower($0)}')
-            echo "${APP_NAME}-v\${{ env.VERSION }}" >> tag_format.txt
-          done
-
-      - name: Read tag format from file
-        id: read_tag_format
-        run: |
-          echo "::set-output name=TAG_FORMAT::$(cat tag_format.txt)"
-
-      # Determine the path to the CHANGELOG.md file dynamically
-      - name: Determine CHANGELOG.md path
-        id: changelog_path
-        run: |
-          APP_DIRS=""
-          for i in $(env | grep ^DIR_ | cut -d'=' -f2-); do
-            if [[ -f "$i/CHANGELOG.md" ]]; then
-              echo "::set-output name=CHANGELOG_PATH::$i/CHANGELOG.md"
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          while IFS= read -r dir; do
+            APP_NAME=$(echo "$dir" | awk '{print tolower($0)}')
+            echo "::set-output name=tag_format::$APP_NAME-v\${version}"
+            if [[ -f "$dir/CHANGELOG.md" ]]; then
+              echo "::set-output name=path::$dir/CHANGELOG.md"
             fi
-          done
+          done <<< "$APP_DIRS"
 
-      # Run semantic release only if CHANGELOG.md path is available
+      # Run semantic release for each changed directory
       - name: Semantic Release
-        uses: docker://ghcr.io/codfish/semantic-release-action:v2
         id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
-        with:
-          tag_format: ${{ steps.read_tag_format.outputs.TAG_FORMAT }}
-          additional_packages: |
-            ['@semantic-release/changelog', '@semantic-release/git']
-          plugins: |
-            [
-              '@semantic-release/commit-analyzer',
-              '@semantic-release/release-notes-generator',
-              ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.CHANGELOG_PATH }}" }],
-              '@semantic-release/github',
-              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.CHANGELOG_PATH }}"] }]
-            ]
-          # Specify default branches to add support for the `main` branch
-          # which semantic-release doesn't have as a default yet.
-          branches: |
-            [
-              'master'
-            ]
-        if: steps.changelog_path.outputs.CHANGELOG_PATH != ''
+        run: |
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          while IFS= read -r dir; do
+            TAG_FORMAT=$(echo "$dir" | awk '{print tolower($0)}')-v\${version}
+            CHANGELOG_PATH="$dir/CHANGELOG.md"
+            if [[ -f "$CHANGELOG_PATH" ]]; then
+              echo "Running semantic release for $dir"
+              docker run --rm -v ${{ github.workspace }}:/github/workspace -w /github/workspace \
+                -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
+                ghcr.io/codfish/semantic-release-action:v2 \
+                --tag-format "$TAG_FORMAT" \
+                --additional-packages='["@semantic-release/changelog", "@semantic-release/git"]' \
+                --plugins='["@semantic-release/commit-analyzer", "@semantic-release/release-notes-generator", ["@semantic-release/changelog", { "changelogFile": "$CHANGELOG_PATH" }], "@semantic-release/github", ["@semantic-release/git", { "assets": ["$CHANGELOG_PATH"] }]]'
+            fi
+          done <<< "$APP_DIRS"
 
       - name: Semantic Release Output Summary
         id: semantic_summary
