@@ -28,7 +28,6 @@ jobs:
           echo "Changed files: $changed_files"
           echo "::set-output name=dirs::$changed_files"
 
-
       # Check if there are any tags available
       - name: Check for tags
         id: check_tags
