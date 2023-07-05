@@ -20,56 +20,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Get the folder path of changed files
       - name: Get changed directories
         id: changed_dirs
         run: |
-          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--' | sort | uniq)"
-
-      # Update the tag format and determine the path to the CHANGELOG.md file for each changed directory
-      - name: Update tag format and determine CHANGELOG.md path
-        id: update_tag_changelog
-        run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          while IFS= read -r dir; do
-            APP_NAME=$(echo "$dir" | awk '{print tolower($0)}')
-            echo "::set-output name=tag_format::$APP_NAME-v\${version}"
-            if [[ -f "$dir/CHANGELOG.md" ]]; then
-              echo "::set-output name=path::$dir/CHANGELOG.md"
-            fi
-          done <<< "$APP_DIRS"
-
-      # Run semantic release for each changed directory
-      - name: Semantic Release
-        id: semantic
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
-        run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          while IFS= read -r dir; do
-            TAG_FORMAT=$(echo "$dir" | awk '{print tolower($0)}')-v\${version}
-            CHANGELOG_PATH="$dir/CHANGELOG.md"
-            if [[ -f "$CHANGELOG_PATH" ]]; then
-              echo "Running semantic release for $dir"
-              docker run --rm -v ${{ github.workspace }}:/github/workspace -w /github/workspace \
-                -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
-                ghcr.io/codfish/semantic-release-action:v2 \
-                --tag-format "$TAG_FORMAT" \
-                --plugins='["@semantic-release/changelog", "@semantic-release/github"]' \
-                --success-comment='@semantic-release/github-success-comment' \
-                --fail-comment='@semantic-release/github-fail-comment'
-            fi
-          done <<< "$APP_DIRS"
-
-      - name: Semantic Release Output Summary
-        id: semantic_summary
-        run: |
-          echo "### Semantic Version = ${{ steps.semantic.outputs.release-version }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-        continue-on-error: true
-
+          CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')
+          echo "Changed directories: $CHANGED_DIRS"
+          echo "::set-output name=dirs::$CHANGED_DIRS"
+        
 
 
 
