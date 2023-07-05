@@ -56,7 +56,6 @@ jobs:
             done <<< "$APP_DIRS"
           fi
 
-
       # Run semantic release only if CHANGELOG.md path is available
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
@@ -92,7 +91,7 @@ jobs:
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
         
-
+        
 
       # Run semantic release for each directory if CHANGELOG.md path is available
       # - name: Semantic Release
