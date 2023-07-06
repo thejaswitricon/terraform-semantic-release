@@ -1,3 +1,13 @@
+# [1.1.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/eks/eks-simple/modules-v1.0.0...modules/aws/eks/eks-simple/modules-v1.1.0) (2023-07-06)
+
+
+### Features
+
+* **root:** initialize a demo folder ([d1d807e](https://github.com/thejaswitricon/terraform-semantic-release/commit/d1d807e60752499e6786a4cb9bb5ecbd715bcbfc))
+* **root:** initialize a demo folder ([b43b272](https://github.com/thejaswitricon/terraform-semantic-release/commit/b43b272180a8ca79e1bf0e7da6fe6318b07018f8))
+* **root:** initialize a demo folder ([47997aa](https://github.com/thejaswitricon/terraform-semantic-release/commit/47997aa64b8ee649f5201ec29a57f8eafd9b405f))
+* **root:** initialize a demo folder ([f642d9a](https://github.com/thejaswitricon/terraform-semantic-release/commit/f642d9a8af94bd5bc157fe442a8e2c23369d9e1d))
+
 # 1.0.0 (2023-07-06)
 
 
