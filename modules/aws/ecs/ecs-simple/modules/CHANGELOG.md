@@ -1,3 +1,35 @@
+# [1.3.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.2.0...modules/aws/ecs/ecs-simple/modules-v1.3.0) (2023-07-06)
+
+
+### Features
+
+* **root:** initialize a demo folder ([cd6096e](https://github.com/thejaswitricon/terraform-semantic-release/commit/cd6096ecd1f23b8470bebe901adfc48b2dfa4e58))
+* **root:** initialize a demo folder ([9e8b49e](https://github.com/thejaswitricon/terraform-semantic-release/commit/9e8b49e9027458204cd189f43b132bc8abb9f025))
+* **root:** initialize a demo folder ([d97f898](https://github.com/thejaswitricon/terraform-semantic-release/commit/d97f898712240269ae92299c5f9ff3ecfa7cd9ee))
+* **root:** initialize a demo folder ([294b4b2](https://github.com/thejaswitricon/terraform-semantic-release/commit/294b4b2852e2db6f2109111969594ec6a04c28d7))
+* **root:** initialize a demo folder ([83929e2](https://github.com/thejaswitricon/terraform-semantic-release/commit/83929e277f649f28c3295d65fe08d067bdf74eb9))
+* **root:** initialize a demo folder ([dacc62e](https://github.com/thejaswitricon/terraform-semantic-release/commit/dacc62e410224f73bf725483b23517e7f5f9f648))
+* **root:** initialize a demo folder ([ff962ad](https://github.com/thejaswitricon/terraform-semantic-release/commit/ff962ad64ab8d3f118510fd8483901816758c3f9))
+* **root:** initialize a demo folder ([2c1635f](https://github.com/thejaswitricon/terraform-semantic-release/commit/2c1635f7b2f95f3b7ecddf2a492779555f3620b7))
+* **root:** initialize a demo folder ([f6782f2](https://github.com/thejaswitricon/terraform-semantic-release/commit/f6782f2e2969bb0d4175e5adab617a788ae3b72f))
+* **root:** initialize a demo folder ([cd02147](https://github.com/thejaswitricon/terraform-semantic-release/commit/cd021473fd360973cb82859fffd39d5e96968fe6))
+* **root:** initialize a demo folder ([828d63b](https://github.com/thejaswitricon/terraform-semantic-release/commit/828d63b388a852d252158cd8e58d18fe545aa84a))
+* **root:** initialize a demo folder ([81c383c](https://github.com/thejaswitricon/terraform-semantic-release/commit/81c383c1256bb37088a35106f18e7c6b13b4a5d6))
+* **root:** initialize a demo folder ([ee43858](https://github.com/thejaswitricon/terraform-semantic-release/commit/ee43858e51d5a425bfe8ec8bd447866004a2fdd2))
+* **root:** initialize a demo folder ([3c6b857](https://github.com/thejaswitricon/terraform-semantic-release/commit/3c6b8578972d0de82899d9b0dd0a4f3decb62d6a))
+* **root:** initialize a demo folder ([a8cb06a](https://github.com/thejaswitricon/terraform-semantic-release/commit/a8cb06ad0feb079ef21513c4bdbab08c555fee90))
+* **root:** initialize a demo folder ([b07b627](https://github.com/thejaswitricon/terraform-semantic-release/commit/b07b6279bc5e1b982b06f18f31baa791ae31cd9b))
+* **root:** initialize a demo folder ([372d820](https://github.com/thejaswitricon/terraform-semantic-release/commit/372d820a66418be43f2e8503e48a27ed91f1c60c))
+* **root:** initialize a demo folder ([ec41f96](https://github.com/thejaswitricon/terraform-semantic-release/commit/ec41f968fb537a945a8fdd9d1692317e746ffb8e))
+* **root:** initialize a demo folder ([22b19cc](https://github.com/thejaswitricon/terraform-semantic-release/commit/22b19ccc392d4b9df83530c923ed55da446a2707))
+* **root:** initialize a demo folder ([a7aaea8](https://github.com/thejaswitricon/terraform-semantic-release/commit/a7aaea89249cd1d0a02d2ece4af29fbc24df26f9))
+* **root:** initialize a demo folder ([8af40e8](https://github.com/thejaswitricon/terraform-semantic-release/commit/8af40e872907f51e22388d0cc67bd356a9eb1d4f))
+* **root:** initialize a demo folder ([ff39f44](https://github.com/thejaswitricon/terraform-semantic-release/commit/ff39f4462062a03c0e8724c2bba93217d269a45d))
+* **root:** initialize a demo folder ([17ca10e](https://github.com/thejaswitricon/terraform-semantic-release/commit/17ca10ebcadd7b5b406f10cc244fc1e4cf60b99e))
+* **root:** initialize a demo folder ([aa66c1e](https://github.com/thejaswitricon/terraform-semantic-release/commit/aa66c1eccd83df39b996cf861902f053b4ce5c8c))
+* **root:** initialize a demo folder ([fc93114](https://github.com/thejaswitricon/terraform-semantic-release/commit/fc93114528a6885762be7b6f50bab5a38a87eb47))
+* **root:** initialize a demo folder ([992dd2b](https://github.com/thejaswitricon/terraform-semantic-release/commit/992dd2bb9bc0a0224fcf15a98daadda0b205a69b))
+
 # [1.2.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.1.1...modules/aws/ecs/ecs-simple/modules-v1.2.0) (2023-07-05)
 
 
