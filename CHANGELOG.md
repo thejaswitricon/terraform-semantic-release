@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.3.0...v1.4.0) (2023-07-06)
+
+
+### Features
+
+* **root:** initialize a demo folder ([d97f898](https://github.com/thejaswitricon/terraform-semantic-release/commit/d97f898712240269ae92299c5f9ff3ecfa7cd9ee))
+
 # [1.3.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.2.0...v1.3.0) (2023-07-06)
 
 
