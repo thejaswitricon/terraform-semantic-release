@@ -70,7 +70,7 @@ jobs:
           plugins: |
             [
               '@semantic-release/commit-analyzer',
-              '@semantic-release/release-notes-generator',
+              ['@semantic-release/release-notes-generator', { "preset": "conventionalcommits", "writerOpts": { "commitsSort": ["subject", "asc"], "groupBy": "none", "transform": "{{#each commits}}* {{subject}}{{this.break}}{{/each}}" } }],
               ['@semantic-release/changelog', { "changelogFile": "${{ steps.changelog_path.outputs.path }}" }],
               '@semantic-release/github',
               ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
