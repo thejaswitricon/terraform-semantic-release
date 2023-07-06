@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-    # - 'modules/**'
+    paths:
+      - 'modules/**'
 permissions: write-all
 
 jobs:
@@ -19,33 +19,40 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Get the folder path of changed file
       - name: Get changed directories
         id: changed_dirs
         run: |
-          FILE_PATHS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} { if (NF > 1) { NF--; print } else { print $0 } }')
-          echo "::set-output name=dirs::${FILE_PATHS}"
-        
+          CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')
+          if [[ -z $CHANGED_DIRS ]]; then
+            echo "::set-output name=dirs::"
+          else
+            echo "::set-output name=dirs::$CHANGED_DIRS"
+          fi
+
       # Update the tag format to include the name of the directory
       - name: Update tag format
         id: update_tag_format
         run: |
-          APP_NAME=$(echo "${{ steps.changed_dirs.outputs.dirs }}" | awk '{print tolower($0)}')
-          echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          if [[ -z $APP_DIRS ]]; then
+            echo "::set-output name=tag_format::v\${version}"
+          else
+            APP_NAME=$(echo "$APP_DIRS" | awk '{print tolower($0)}')
+            echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
+          fi
 
       # Determine the path to the CHANGELOG.md file dynamically
       - name: Determine CHANGELOG.md path
         id: changelog_path
         run: |
           APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          ROOT_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -v '/')
-          if [[ -n "$ROOT_CHANGED" ]]; then
+          if [[ -z $APP_DIRS ]]; then
             echo "::set-output name=path::./CHANGELOG.md"
           else
             while IFS= read -r dir; do
               if [[ -f "${dir}/CHANGELOG.md" ]]; then
                 echo "::set-output name=path::${dir}/CHANGELOG.md"
-                exit 0  # Exit loop after finding the first matching changelog file
               fi
             done <<< "$APP_DIRS"
           fi
@@ -84,6 +91,7 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
+
         
 
       # Run semantic release for each directory if CHANGELOG.md path is available
