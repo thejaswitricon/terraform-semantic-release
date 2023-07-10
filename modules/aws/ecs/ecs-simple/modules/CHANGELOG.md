@@ -1,3 +1,22 @@
+# [1.4.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.3.0...modules/aws/ecs/ecs-simple/modules-v1.4.0) (2023-07-10)
+
+
+### Bug Fixes
+
+* **root:** initial ([aa81f95](https://github.com/thejaswitricon/terraform-semantic-release/commit/aa81f95431d606daeee6cb94b9592fcadec5fd61))
+* **root:** initial ([067e87c](https://github.com/thejaswitricon/terraform-semantic-release/commit/067e87c689b0e112ecd93902dbd85f4f20d4db84))
+* **root:** initial ([72407c3](https://github.com/thejaswitricon/terraform-semantic-release/commit/72407c3dbda0fd8bc9ffeb64b2fc408e69a92c9a))
+
+
+### Features
+
+* **root:** add index.js file in the root ([1a95dd4](https://github.com/thejaswitricon/terraform-semantic-release/commit/1a95dd40b7cc144d63bd4462ce7d772cc9c75969))
+* **root:** initialize a demo folder ([d1d807e](https://github.com/thejaswitricon/terraform-semantic-release/commit/d1d807e60752499e6786a4cb9bb5ecbd715bcbfc))
+* **root:** initialize a demo folder ([b43b272](https://github.com/thejaswitricon/terraform-semantic-release/commit/b43b272180a8ca79e1bf0e7da6fe6318b07018f8))
+* **root:** initialize a demo folder ([47997aa](https://github.com/thejaswitricon/terraform-semantic-release/commit/47997aa64b8ee649f5201ec29a57f8eafd9b405f))
+* **root:** initialize a demo folder ([f642d9a](https://github.com/thejaswitricon/terraform-semantic-release/commit/f642d9a8af94bd5bc157fe442a8e2c23369d9e1d))
+* **root:** initialize a demo folder ([db4dea7](https://github.com/thejaswitricon/terraform-semantic-release/commit/db4dea75aaac3f0631c5ad597b94c6f36af934f3))
+
 # [1.3.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.2.0...modules/aws/ecs/ecs-simple/modules-v1.3.0) (2023-07-06)
 
 
