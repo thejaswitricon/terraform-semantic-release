@@ -1,3 +1,17 @@
+# CHANGELOG
+
+## [1.4.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.0...modules/aws/ecs/ecs-simple/modules-v1.4.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* **root:** initial ([ca6ab9a](https://github.com/thejaswitricon/terraform-semantic-release/commit/ca6ab9a9e44b36d0f85284ec440d660ac412917b))
+* **root:** initial ([01cf2a2](https://github.com/thejaswitricon/terraform-semantic-release/commit/01cf2a2293501c093d4b92e8ca4838652ce2c435))
+* **root:** initial ([1d6a246](https://github.com/thejaswitricon/terraform-semantic-release/commit/1d6a2464d23ae17e2d9cfb230cb9ec90f8bd070a))
+* **root:** initial ([e73570a](https://github.com/thejaswitricon/terraform-semantic-release/commit/e73570a391fd36b71acb77a19c6ceef271764a49))
+* **root:** initial ([0276626](https://github.com/thejaswitricon/terraform-semantic-release/commit/0276626bead579e2280f5ce7e45ba1092d42e58f))
+* **root:** initial ([e445a12](https://github.com/thejaswitricon/terraform-semantic-release/commit/e445a123a20125cfa489614c9afa58e0ef2798c9))
+
 # [1.4.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.3.0...modules/aws/ecs/ecs-simple/modules-v1.4.0) (2023-07-10)
 
 
