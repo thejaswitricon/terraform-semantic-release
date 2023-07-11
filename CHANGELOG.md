@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.5.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.1...v1.5.2) (2023-07-11)
+
+
+### Bug Fixes
+
+* **root:** initial ([01cf2a2](https://github.com/thejaswitricon/terraform-semantic-release/commit/01cf2a2293501c093d4b92e8ca4838652ce2c435))
+* **root:** initial ([1d6a246](https://github.com/thejaswitricon/terraform-semantic-release/commit/1d6a2464d23ae17e2d9cfb230cb9ec90f8bd070a))
+
 ## [1.5.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.0...v1.5.1) (2023-07-10)
 
 
