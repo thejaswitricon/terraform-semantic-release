@@ -95,9 +95,10 @@ jobs:
         id: add_version_to_changelog
         run: |
           version=$(git describe --tags --abbrev=0)
-          sed -i "s/\[[0-9]\+\.[0-9]\+\.[0-9]\+\]/[${version}] $(date +'%Y-%m-%d')/" CHANGELOG.md || echo "Failed to update CHANGELOG.md"
-          cat CHANGELOG.md
+          sed -i "s/\[[0-9]\+\.[0-9]\+\.[0-9]\+\]/[${version}] $(date +'%Y-%m-%d')/" $GITHUB_WORKSPACE/CHANGELOG.md || echo "Failed to update CHANGELOG.md"
+          cat $GITHUB_WORKSPACE/CHANGELOG.md
         continue-on-error: true
+        
 
       # Step 6: Run semantic release
       - name: Semantic Release
