@@ -91,13 +91,20 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      - name: Add new version to changelog
-        id: add_version_to_changelog
+      - name: Update root CHANGELOG.md
         run: |
-          version=$(git describe --tags --abbrev=0)
-          sed -i "s/\[[0-9]\+\.[0-9]\+\.[0-9]\+\]/[${version}] $(date +'%Y-%m-%d')/" $GITHUB_WORKSPACE/CHANGELOG.md || echo "Failed to update CHANGELOG.md"
-          cat $GITHUB_WORKSPACE/CHANGELOG.md
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          CHANGELOG_FILES=$(find $APP_DIRS -name 'CHANGELOG.md' -type f)
+      
+          OUTPUT_FILE="$GITHUB_WORKSPACE/CHANGELOG.md"
+          for file in $CHANGELOG_FILES; do
+            cat $file >> $OUTPUT_FILE
+            echo "" >> $OUTPUT_FILE
+          done
+      
+          cat $OUTPUT_FILE
         continue-on-error: true
+        
         
 
       # Step 6: Run semantic release
