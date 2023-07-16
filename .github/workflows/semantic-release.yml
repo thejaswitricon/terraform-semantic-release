@@ -93,19 +93,14 @@ jobs:
 
       - name: Update root CHANGELOG.md
         run: |
-          RELEASES=$(curl -s "https://api.github.com/repos/${{ github.repository }}/releases" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}")
           OUTPUT_FILE="$GITHUB_WORKSPACE/CHANGELOG.md"
       
-          echo "## Changelog" > $OUTPUT_FILE
-          echo "" >> $OUTPUT_FILE
-      
-          echo "$RELEASES" | jq -r '.[].body' | sed '/^$/d' | while read -r line; do
-            echo "$line" >> $OUTPUT_FILE
-            echo "" >> $OUTPUT_FILE
-          done
+          # Fetch the releases using the GitHub CLI
+          gh release list -L 50 --json name,body --repo ${{ github.repository }} | jq -r '.[] | "\n# Release: " + .name + "\n\n" + .body' > $OUTPUT_FILE
       
           cat $OUTPUT_FILE
         continue-on-error: true
+        
 
       # Step 6: Run semantic release
       - name: Semantic Release
