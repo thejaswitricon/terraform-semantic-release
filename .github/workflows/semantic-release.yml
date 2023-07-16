@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Get the folder path of changed file
+      # Step 1: Get the name of the folder that had the changes
       - name: Get changed directories
         id: changed_dirs
         run: |
@@ -30,7 +30,41 @@ jobs:
             echo "::set-output name=dirs::$CHANGED_DIRS"
           fi
 
-      # Update the tag format to include the name of the directory
+      # Step 2: Check if the changed folder should be considered
+      - name: Check folder with semver.yml
+        id: check_folder
+        run: |
+          CHANGED_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          echo "CHANGED_DIRS: $CHANGED_DIRS"  # Debugging line
+          if [[ -z $CHANGED_DIRS ]]; then
+            echo "::set-output name=consider_folder::"
+          else
+            SEMVER_PATTERNS=$(cat .github/semver.yml)
+            echo "SEMVER_PATTERNS: $SEMVER_PATTERNS"
+            PATTERNS=()
+            while IFS= read -r LINE; do
+              if [[ $LINE == -* ]]; then
+                FOLDER=$(echo "$LINE" | sed 's/^- //')
+                PATTERNS+=("$FOLDER")
+              fi
+            done <<< "$SEMVER_PATTERNS"
+            echo "PATTERNS: ${PATTERNS[*]}"
+            MATCHED_FOLDER=""
+            for PATTERN in "${PATTERNS[@]}"; do
+              if [[ $CHANGED_DIRS == $PATTERN ]]; then
+                MATCHED_FOLDER=$CHANGED_DIRS
+                break
+              fi
+            done
+            if [[ -n $MATCHED_FOLDER ]]; then
+              echo "::set-output name=consider_folder::$CHANGED_DIRS"
+            else
+              echo "No matching folder found in semver.yml. Skipping release."
+              return 0
+            fi
+          fi
+
+      # Step 3: Create git tags
       - name: Update tag format
         id: update_tag_format
         run: |
@@ -40,9 +74,9 @@ jobs:
           else
             APP_NAME=$(echo "$APP_DIRS" | awk '{print tolower($0)}')
             echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-          fi
+          fi     
 
-      # Determine the path to the CHANGELOG.md file
+      # Step 5: Determine the path to the CHANGELOG.md file
       - name: Determine CHANGELOG.md path
         id: changelog_path
         run: |
@@ -50,14 +84,22 @@ jobs:
           if [[ -z $APP_DIRS ]]; then
             echo "::set-output name=path::./CHANGELOG.md"
           else
-            while IFS= read -r dir; do
-              if [[ -f "${dir}/CHANGELOG.md" ]]; then
-                echo "::set-output name=path::${dir}/CHANGELOG.md"
-              fi
-            done <<< "$APP_DIRS"
+            CHANGELOG_PATH="${APP_DIRS}/CHANGELOG.md"
+            if [[ ! -f "$CHANGELOG_PATH" ]]; then
+              touch "$CHANGELOG_PATH"
+            fi
+            echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      # Run semantic release
+      - name: Add new version to changelog
+        id: add_version_to_changelog
+        run: |
+          version=$(git describe --tags --abbrev=0)
+          sed -i "s/\[[0-9]\+\.[0-9]\+\.[0-9]\+\]/[${version}] $(date +'%Y-%m-%d')/" CHANGELOG.md || echo "Failed to update CHANGELOG.md"
+          cat CHANGELOG.md
+        continue-on-error: true
+
+      # Step 6: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
         id: semantic
@@ -81,6 +123,7 @@ jobs:
             ]
         if: steps.changelog_path.outputs.path != ''
 
+      #Semantic release output summary
       - name: Semantic Release Output Summary
         id: semantic_summary
         run: |
@@ -89,4 +132,98 @@ jobs:
           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         continue-on-error: true
+
+
+
+# name: Semantic Release for Apps
+
+# on:
+#   push:
+#     branches:
+#       - master
+#     # paths:
+#     #   - 'modules/**'
+# permissions: write-all
+
+# jobs:
+#   release:
+#     name: Semantic Release
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#         id: checkout
+#         with:
+#           fetch-depth: 0
+
+#       # Get the folder path of changed file
+#       - name: Get changed directories
+#         id: changed_dirs
+#         run: |
+#           CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')
+#           if [[ -z $CHANGED_DIRS ]]; then
+#             echo "::set-output name=dirs::"
+#           else
+#             echo "::set-output name=dirs::$CHANGED_DIRS"
+#           fi
+
+#       # Update the tag format to include the name of the directory
+#       - name: Update tag format
+#         id: update_tag_format
+#         run: |
+#           APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+#           if [[ -z $APP_DIRS ]]; then
+#             echo "::set-output name=tag_format::v\${version}"
+#           else
+#             APP_NAME=$(echo "$APP_DIRS" | awk '{print tolower($0)}')
+#             echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
+#           fi
+
+#       # Determine the path to the CHANGELOG.md file
+#       - name: Determine CHANGELOG.md path
+#         id: changelog_path
+#         run: |
+#           APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+#           if [[ -z $APP_DIRS ]]; then
+#             echo "::set-output name=path::./CHANGELOG.md"
+#           else
+#             while IFS= read -r dir; do
+#               if [[ -f "${dir}/CHANGELOG.md" ]]; then
+#                 echo "::set-output name=path::${dir}/CHANGELOG.md"
+#               fi
+#             done <<< "$APP_DIRS"
+#           fi
+
+#       # Run semantic release
+#       - name: Semantic Release
+#         uses: docker://ghcr.io/codfish/semantic-release-action:v2
+#         id: semantic
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+#         with:
+#           tag_format: '${{ steps.update_tag_format.outputs.tag_format }}'
+#           additional_packages: |
+#             ['@semantic-release/changelog', '@semantic-release/git']
+#           plugins: |
+#             [
+#               '@semantic-release/commit-analyzer',
+#               '@semantic-release/release-notes-generator',
+#               ['@semantic-release/changelog', { changelogTitle: '# CHANGELOG', "changelogFile": "${{ steps.changelog_path.outputs.path }}" }],
+#               '@semantic-release/github',
+#               ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
+#             ]
+#           branches: |
+#             [
+#               'master'
+#             ]
+#         if: steps.changelog_path.outputs.path != ''
+
+#       - name: Semantic Release Output Summary
+#         id: semantic_summary
+#         run: |
+#           echo "### Semantic Version = ${{ steps.semantic.outputs.release-version }}\`" >> $GITHUB_STEP_SUMMARY
+#           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#           echo "${{ toJson(steps.semantic.outputs) }}" >> $GITHUB_STEP_SUMMARY
+#           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#         continue-on-error: true
         
