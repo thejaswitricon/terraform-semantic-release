@@ -99,12 +99,6 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
-        with:
-          latest-version: ${{ github.event.release.tag_name }}
-          release-notes: ${{ github.event.release.body }}
-
       # Step 7: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
@@ -128,6 +122,12 @@ jobs:
               'master'
             ]
         if: steps.changelog_path.outputs.path != ''
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
 
       #Semantic release output summary
       - name: Semantic Release Output Summary
