@@ -92,6 +92,18 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
+      - name: Get GitHub releases
+        run: |
+          # Send a GET request to the GitHub API to retrieve the releases
+          response=$(curl -s "https://api.github.com/repos/{owner}/{repo}/releases")
+
+          # Parse the response using jq to extract the release information
+          releases=$(echo "$response" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")" + "\n" + .body + "\n"')
+
+          # Print the releases
+          echo "$releases"
+
+
       # Step 7: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
@@ -115,28 +127,6 @@ jobs:
               'master'
             ]
         if: steps.changelog_path.outputs.path != ''
-
-      # Update the root CHANGELOG.md with releases from folder CHANGELOG.md files
-      - name: Update Root CHANGELOG.md
-        run: |
-          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
-          ROOT_CHANGELOG_PATH="./CHANGELOG.md"
-          if [[ -z $APP_DIRS ]]; then
-            # No folder changes, skip updating root CHANGELOG.md
-            exit 0
-          fi
-          TEMP_CHANGELOG_PATH="./temp_changelog.md"
-          touch "$TEMP_CHANGELOG_PATH"
-          for folder in $APP_DIRS; do
-            folder_changelog_path="${folder}/CHANGELOG.md"
-            if [[ -f "$folder_changelog_path" ]]; then
-              echo "### ${folder}" >> "$TEMP_CHANGELOG_PATH"
-              cat "$folder_changelog_path" >> "$TEMP_CHANGELOG_PATH"
-              echo "" >> "$TEMP_CHANGELOG_PATH"
-            fi
-          done
-          cat "$TEMP_CHANGELOG_PATH" >> "$ROOT_CHANGELOG_PATH"
-          rm "$TEMP_CHANGELOG_PATH"
 
       #Semantic release output summary
       - name: Semantic Release Output Summary
