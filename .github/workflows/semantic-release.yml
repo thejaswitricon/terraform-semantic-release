@@ -93,11 +93,9 @@ jobs:
 
       - name: Fetch GitHub releases
         run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")\n" + (.body // "") + "\n"')
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
           echo "$releases" > CHANGELOG.md
           cat CHANGELOG.md
-        
-      
         
       # Step 6: Run semantic release
       - name: Semantic Release
