@@ -95,9 +95,10 @@ jobs:
         run: |
           releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")" + "\n" + .body + "\n"')
       
-          echo "# Changelog" > CHANGELOG.md
+          sed -i '/# Changelog/,$d' CHANGELOG.md
+          echo "# Changelog" >> CHANGELOG.md
           echo "$releases" >> CHANGELOG.md
-      
+
           cat CHANGELOG.md
         
         
