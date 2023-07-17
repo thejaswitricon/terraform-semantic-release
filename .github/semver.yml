@@ -3,5 +3,3 @@
 scope: "@tandfgroup/terraform"
 include:
 - modules/*/*/*
-- modules/**/modules
-
