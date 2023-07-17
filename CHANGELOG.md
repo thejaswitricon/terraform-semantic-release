@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [1.5.17](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.16...v1.5.17) (2023-07-17)
+
+
+### Bug Fixes
+
+* **root:** initial ([d585415](https://github.com/thejaswitricon/terraform-semantic-release/commit/d585415718e8f00ba6e2fe926a5af48e3e1da1db))
+* **root:** initial ([3240be6](https://github.com/thejaswitricon/terraform-semantic-release/commit/3240be62bc38118e0ddc628c50774d52841a7770))
+* **root:** initial ([2c3c293](https://github.com/thejaswitricon/terraform-semantic-release/commit/2c3c293e35c24d09e012e5ac497727c21b3401ee))
+* **root:** initial ([07d27da](https://github.com/thejaswitricon/terraform-semantic-release/commit/07d27da5869e083fa8b42ed1df2fea29103bd5ea))
+* **root:** initial ([2893814](https://github.com/thejaswitricon/terraform-semantic-release/commit/28938148e7886dda9a2f00ae9e6df4db19fb2508))
+* **root:** initial ([f0c48d1](https://github.com/thejaswitricon/terraform-semantic-release/commit/f0c48d10edbca228bc74473bab1cc355d451845b))
+* **root:** initial ([34c3ad4](https://github.com/thejaswitricon/terraform-semantic-release/commit/34c3ad4cfa154411890699dd4b3e0068d0072be8))
+* **root:** initial ([dee7885](https://github.com/thejaswitricon/terraform-semantic-release/commit/dee7885067ee938febed9874af1480d6c95dd5b5))
+* **root:** initial ([c8c99ee](https://github.com/thejaswitricon/terraform-semantic-release/commit/c8c99ee722c4e09fd6257480d6e7d64467fb233d))
+* **root:** initial ([baeda7e](https://github.com/thejaswitricon/terraform-semantic-release/commit/baeda7ec860f9dca04f1e390ef07f9fdd94210fd))
+* **root:** initial ([20665c3](https://github.com/thejaswitricon/terraform-semantic-release/commit/20665c337da69614d203628455921e611898054d))
+* **root:** initial ([618d5da](https://github.com/thejaswitricon/terraform-semantic-release/commit/618d5daa0f3c8b63851adb3d72e1b700a3c0eeac))
+
 ## [1.5.16](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.15...v1.5.16) (2023-07-17)
 
 
