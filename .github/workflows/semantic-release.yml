@@ -94,14 +94,14 @@ jobs:
       - name: Fetch GitHub releases
         run: |
           releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[].tag_name')
-          echo "## Changelog" > CHANGELOG.md
-          for release in $releases; do
-            echo "- $release" >> CHANGELOG.md
-          done
+      
+          changelog_content=$(echo "$releases" | awk '{print "- " $0}')
+      
+          echo "# Changelog" > CHANGELOG.md
+          echo "$changelog_content" >> CHANGELOG.md
       
           cat CHANGELOG.md
         
-
       # Step 6: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
