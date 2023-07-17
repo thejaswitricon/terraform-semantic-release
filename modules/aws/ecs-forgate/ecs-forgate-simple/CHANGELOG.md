@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [1.1.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* **root:** initial ([feee6c4](https://github.com/thejaswitricon/terraform-semantic-release/commit/feee6c453b96d93a692382534d4ac7d327a78e7f))
+* **root:** initial ([461a0eb](https://github.com/thejaswitricon/terraform-semantic-release/commit/461a0ebf140cc9d666d99703a9c2ddea827e3f22))
+* **root:** initial ([10f865e](https://github.com/thejaswitricon/terraform-semantic-release/commit/10f865e85c8204d5f80b9a3cc66aa980dda4d90e))
+* **root:** initial ([a461c39](https://github.com/thejaswitricon/terraform-semantic-release/commit/a461c39d74a0e87da74ae12a296e46f6f122ec02))
+
 # [1.1.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.0.0...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0) (2023-07-17)
 
 
