@@ -64,7 +64,6 @@ jobs:
             fi
           fi
 
-      # Step 3: Create git tags
       - name: Update tag format
         id: update_tag_format
         run: |
@@ -72,10 +71,11 @@ jobs:
           if [[ -z $APP_DIRS ]]; then
             echo "::set-output name=tag_format::v\${version}"
           else
-            APP_NAME=$(echo "$APP_DIRS" | awk '{print tolower($0)}')
+            APP_NAME=$(basename "$APP_DIRS")
+            APP_NAME=$(echo "$APP_NAME" | awk '{print tolower($0)}')
             echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
-          fi     
-
+          fi
+        
       # Step 5: Determine the path to the CHANGELOG.md file
       - name: Determine CHANGELOG.md path
         id: changelog_path
