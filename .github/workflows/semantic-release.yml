@@ -18,8 +18,6 @@ jobs:
         id: checkout
         with:
           fetch-depth: 0
-          ref: ${{ github.event.release.target_commitish }}
-
 
       # Step 1: Get the name of the folder that had the changes
       - name: Get changed directories
@@ -117,6 +115,28 @@ jobs:
               'master'
             ]
         if: steps.changelog_path.outputs.path != ''
+
+      # Update the root CHANGELOG.md with releases from folder CHANGELOG.md files
+      - name: Update Root CHANGELOG.md
+        run: |
+          APP_DIRS="${{ steps.changed_dirs.outputs.dirs }}"
+          ROOT_CHANGELOG_PATH="./CHANGELOG.md"
+          if [[ -z $APP_DIRS ]]; then
+            # No folder changes, skip updating root CHANGELOG.md
+            exit 0
+          fi
+          TEMP_CHANGELOG_PATH="./temp_changelog.md"
+          touch "$TEMP_CHANGELOG_PATH"
+          for folder in $APP_DIRS; do
+            folder_changelog_path="${folder}/CHANGELOG.md"
+            if [[ -f "$folder_changelog_path" ]]; then
+              echo "### ${folder}" >> "$TEMP_CHANGELOG_PATH"
+              cat "$folder_changelog_path" >> "$TEMP_CHANGELOG_PATH"
+              echo "" >> "$TEMP_CHANGELOG_PATH"
+            fi
+          done
+          cat "$TEMP_CHANGELOG_PATH" >> "$ROOT_CHANGELOG_PATH"
+          rm "$TEMP_CHANGELOG_PATH"
 
       #Semantic release output summary
       - name: Semantic Release Output Summary
