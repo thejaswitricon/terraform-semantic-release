@@ -79,6 +79,7 @@ jobs:
 
       # Step 4: Fetch GitHub releases and store in a variable
       - name: Fetch GitHub releases
+        id : fetch_releases
         run: |
           releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
           echo "::set-output name=releases::$releases"
