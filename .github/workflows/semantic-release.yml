@@ -110,9 +110,9 @@ jobs:
             [
               '@semantic-release/commit-analyzer',
               '@semantic-release/release-notes-generator',
-              ['@semantic-release/changelog', { changelogTitle: '# CHANGELOG', "changelogFile": "${{ steps.changelog_path.outputs.path }}", "./CHANGELOG.md" }],
+              ['@semantic-release/changelog', { changelogTitle: '# CHANGELOG', "changelogFile": "${{ steps.changelog_path.outputs.path }}"}],
               '@semantic-release/github',
-              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}", "./CHANGELOG.md"] }]
+              ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
             ]
           branches: |
             [
