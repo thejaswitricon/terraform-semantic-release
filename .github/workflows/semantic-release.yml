@@ -30,12 +30,6 @@ jobs:
             echo "::set-output name=dirs::$CHANGED_DIRS"
           fi
 
-      - name: Fetch GitHub releases
-        run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")\n" + (.body // "") + "\n"')
-          echo "$releases" > $GITHUB_WORKSPACE/CHANGELOG.md
-          cat $GITHUB_WORKSPACE/CHANGELOG.md
-
       # Step 2: Check if the changed folder should be considered
       - name: Check folder with semver.yml
         id: check_folder
@@ -96,6 +90,14 @@ jobs:
             fi
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
+
+      - name: Fetch GitHub releases
+        run: |
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")\n" + (.body // "") + "\n"')
+          echo "$releases" > $GITHUB_WORKSPACE/CHANGELOG.md
+          cat $GITHUB_WORKSPACE/CHANGELOG.md
+        
+      
         
       # Step 6: Run semantic release
       - name: Semantic Release
