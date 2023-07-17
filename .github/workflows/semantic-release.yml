@@ -93,7 +93,7 @@ jobs:
 
       - name: Fetch GitHub releases
         run: |
-          releases=$(curl -s "https://api.github.com/repos/{owner}/{repo}/releases")
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases")
           echo "$releases"
 
       # Step 6: Run semantic release
