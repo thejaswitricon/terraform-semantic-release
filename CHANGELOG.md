@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [1.5.10](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.9...v1.5.10) (2023-07-17)
+
+
+### Bug Fixes
+
+* **root:** initial ([f716e80](https://github.com/thejaswitricon/terraform-semantic-release/commit/f716e8085de70eb2de90832c11519cae2aba5c4a))
+* **root:** initial ([c726dd6](https://github.com/thejaswitricon/terraform-semantic-release/commit/c726dd65d303a89b8f50d56805bfc5cbcd236038))
+
+- v1.5.9
 ## [1.5.9](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.8...v1.5.9) (2023-07-17)
 
 
@@ -8,7 +17,11 @@
 * **root:** initial ([6729ec3](https://github.com/thejaswitricon/terraform-semantic-release/commit/6729ec32840436822eeef1b369fc282aa283f244))
 * **root:** initial ([3c92ff1](https://github.com/thejaswitricon/terraform-semantic-release/commit/3c92ff15d358ce4eac671bf90e0140167b11c9da))
 
-- v1.5.8 (v1.5.8)
+
+
+
+
+- v1.5.8
 ## [1.5.8](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.7...v1.5.8) (2023-07-17)
 
 
@@ -21,7 +34,7 @@
 
 
 
-- v1.5.7 (v1.5.7)
+- v1.5.7
 ## [1.5.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.6...v1.5.7) (2023-07-17)
 
 
@@ -34,7 +47,7 @@
 
 
 
-- v1.5.6 (v1.5.6)
+- v1.5.6
 ## [1.5.6](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.5...v1.5.6) (2023-07-17)
 
 
@@ -51,7 +64,7 @@
 
 
 
-- v1.5.5 (v1.5.5)
+- v1.5.5
 ## [1.5.5](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.4...v1.5.5) (2023-07-17)
 
 
@@ -85,7 +98,7 @@
 
 
 
-- v1.5.4 (v1.5.4)
+- v1.5.4
 ## [1.5.4](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.3...v1.5.4) (2023-07-17)
 
 
@@ -120,7 +133,7 @@
 
 
 
-- modules/aws/eks/eks-simple/modules-v1.2.2 (modules/aws/eks/eks-simple/modules-v1.2.2)
+- modules/aws/eks/eks-simple/modules-v1.2.2
 ## [1.2.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/eks/eks-simple/modules-v1.2.1...modules/aws/eks/eks-simple/modules-v1.2.2) (2023-07-17)
 
 
@@ -135,7 +148,7 @@
 
 
 
-- modules/aws/eks/eks-simple/modules-v1.2.1 (modules/aws/eks/eks-simple/modules-v1.2.1)
+- modules/aws/eks/eks-simple/modules-v1.2.1
 ## [1.2.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/eks/eks-simple/modules-v1.2.0...modules/aws/eks/eks-simple/modules-v1.2.1) (2023-07-17)
 
 
@@ -148,7 +161,7 @@
 
 
 
-- modules/aws/eks/eks-simple/modules-v1.2.0 (modules/aws/eks/eks-simple/modules-v1.2.0)
+- modules/aws/eks/eks-simple/modules-v1.2.0
 # [1.2.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/eks/eks-simple/modules-v1.1.0...modules/aws/eks/eks-simple/modules-v1.2.0) (2023-07-17)
 
 
@@ -209,7 +222,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/modules-v1.4.3 (modules/aws/ecs/ecs-simple/modules-v1.4.3)
+- modules/aws/ecs/ecs-simple/modules-v1.4.3
 ## [1.4.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.2...modules/aws/ecs/ecs-simple/modules-v1.4.3) (2023-07-17)
 
 
@@ -223,7 +236,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/modules-v1.4.2 (modules/aws/ecs/ecs-simple/modules-v1.4.2)
+- modules/aws/ecs/ecs-simple/modules-v1.4.2
 ## [1.4.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.1...modules/aws/ecs/ecs-simple/modules-v1.4.2) (2023-07-17)
 
 
@@ -257,7 +270,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.7 (modules/aws/ecs/ecs-simple/demo-v1.0.7)
+- modules/aws/ecs/ecs-simple/demo-v1.0.7
 ## [1.0.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.6...modules/aws/ecs/ecs-simple/demo-v1.0.7) (2023-07-17)
 
 
@@ -295,7 +308,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.6 (modules/aws/ecs/ecs-simple/demo-v1.0.6)
+- modules/aws/ecs/ecs-simple/demo-v1.0.6
 ## [1.0.6](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.5...modules/aws/ecs/ecs-simple/demo-v1.0.6) (2023-07-17)
 
 
@@ -311,7 +324,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.5 (modules/aws/ecs/ecs-simple/demo-v1.0.5)
+- modules/aws/ecs/ecs-simple/demo-v1.0.5
 ## [1.0.5](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.4...modules/aws/ecs/ecs-simple/demo-v1.0.5) (2023-07-17)
 
 
@@ -324,7 +337,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.7 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.7)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.7
 ## [1.1.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.6...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.7) (2023-07-17)
 
 
@@ -341,7 +354,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.6 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.6)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.6
 ## [1.1.6](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.5...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.6) (2023-07-17)
 
 
@@ -354,7 +367,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.5 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.5)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.5
 ## [1.1.5](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.5) (2023-07-17)
 
 
@@ -369,7 +382,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4
 ## [1.1.4](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4) (2023-07-17)
 
 
@@ -386,7 +399,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3
 ## [1.1.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3) (2023-07-17)
 
 
@@ -409,7 +422,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2
 ## [1.1.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2) (2023-07-17)
 
 
@@ -422,7 +435,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1
 ## [1.1.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1) (2023-07-17)
 
 
@@ -437,7 +450,7 @@
 
 
 
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0 (modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0)
+- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0
 # [1.1.0](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.0.0...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.0) (2023-07-17)
 
 
@@ -527,7 +540,7 @@
 
 
 
-- v1.5.3 (v1.5.3)
+- v1.5.3
 ## [1.5.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.2...v1.5.3) (2023-07-16)
 
 
@@ -545,7 +558,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.4 (modules/aws/ecs/ecs-simple/demo-v1.0.4)
+- modules/aws/ecs/ecs-simple/demo-v1.0.4
 ## [1.0.4](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.3...modules/aws/ecs/ecs-simple/demo-v1.0.4) (2023-07-16)
 
 
@@ -558,7 +571,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.3 (modules/aws/ecs/ecs-simple/demo-v1.0.3)
+- modules/aws/ecs/ecs-simple/demo-v1.0.3
 ## [1.0.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.2...modules/aws/ecs/ecs-simple/demo-v1.0.3) (2023-07-16)
 
 
@@ -571,7 +584,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.2 (modules/aws/ecs/ecs-simple/demo-v1.0.2)
+- modules/aws/ecs/ecs-simple/demo-v1.0.2
 ## [1.0.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.1...modules/aws/ecs/ecs-simple/demo-v1.0.2) (2023-07-16)
 
 
@@ -584,7 +597,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.1 (modules/aws/ecs/ecs-simple/demo-v1.0.1)
+- modules/aws/ecs/ecs-simple/demo-v1.0.1
 ## [1.0.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.0...modules/aws/ecs/ecs-simple/demo-v1.0.1) (2023-07-16)
 
 
@@ -598,7 +611,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/demo-v1.0.0 (modules/aws/ecs/ecs-simple/demo-v1.0.0)
+- modules/aws/ecs/ecs-simple/demo-v1.0.0
 # 1.0.0 (2023-07-16)
 
 
@@ -731,7 +744,7 @@
 
 
 
-- v1.5.2 (v1.5.2)
+- v1.5.2
 ## [1.5.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.1...v1.5.2) (2023-07-11)
 
 
@@ -744,7 +757,7 @@
 
 
 
-- modules/aws/ecs/ecs-simple/modules-v1.4.1 (modules/aws/ecs/ecs-simple/modules-v1.4.1)
+- modules/aws/ecs/ecs-simple/modules-v1.4.1
 ## [1.4.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.0...modules/aws/ecs/ecs-simple/modules-v1.4.1) (2023-07-11)
 
 
@@ -756,20 +769,3 @@
 * **root:** initial ([e73570a](https://github.com/thejaswitricon/terraform-semantic-release/commit/e73570a391fd36b71acb77a19c6ceef271764a49))
 * **root:** initial ([0276626](https://github.com/thejaswitricon/terraform-semantic-release/commit/0276626bead579e2280f5ce7e45ba1092d42e58f))
 * **root:** initial ([e445a12](https://github.com/thejaswitricon/terraform-semantic-release/commit/e445a123a20125cfa489614c9afa58e0ef2798c9))
-
-
-
-
-
-- v1.5.1 (v1.5.1)
-## [1.5.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/v1.5.0...v1.5.1) (2023-07-10)
-
-
-### Bug Fixes
-
-* **root:** initial ([e73570a](https://github.com/thejaswitricon/terraform-semantic-release/commit/e73570a391fd36b71acb77a19c6ceef271764a49))
-* **root:** initial ([0276626](https://github.com/thejaswitricon/terraform-semantic-release/commit/0276626bead579e2280f5ce7e45ba1092d42e58f))
-* **root:** initial ([e445a12](https://github.com/thejaswitricon/terraform-semantic-release/commit/e445a123a20125cfa489614c9afa58e0ef2798c9))
-* **root:** initial ([aa81f95](https://github.com/thejaswitricon/terraform-semantic-release/commit/aa81f95431d606daeee6cb94b9592fcadec5fd61))
-* **root:** initial ([067e87c](https://github.com/thejaswitricon/terraform-semantic-release/commit/067e87c689b0e112ecd93902dbd85f4f20d4db84))
-* **root:** initial ([72407c3](https://github.com/thejaswitricon/terraform-semantic-release/commit/72407c3dbda0fd8bc9ffeb64b2fc408e69a92c9a))
