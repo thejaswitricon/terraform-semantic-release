@@ -93,7 +93,7 @@ jobs:
 
       - name: Fetch GitHub releases
         run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[].tag_name')
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases")
       
           changelog_content=$(echo "$releases" | awk '{print "- " $0}')
       
