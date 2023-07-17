@@ -64,6 +64,7 @@ jobs:
             fi
           fi
 
+      #Update the tag format
       - name: Update tag format
         id: update_tag_format
         run: |
@@ -75,6 +76,12 @@ jobs:
             APP_NAME=$(echo "$APP_NAME" | awk '{print tolower($0)}')
             echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
           fi
+
+      # Step 4: Fetch GitHub releases and store in a variable
+      - name: Fetch GitHub releases
+        run: |
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
+          echo "::set-output name=releases::$releases"
         
       # Step 5: Determine the path to the CHANGELOG.md file
       - name: Determine CHANGELOG.md path
@@ -91,13 +98,13 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      - name: Fetch GitHub releases
+      # Step 6: Update root CHANGELOG.md file with releases
+      - name: Update root CHANGELOG.md
         run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
-          echo "$releases" > CHANGELOG.md
-          cat CHANGELOG.md
+          releases="${{ steps.fetch_releases.outputs.releases }}"
+          echo "$releases" >> CHANGELOG.md
         
-      # Step 6: Run semantic release
+      # Step 7: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
         id: semantic
