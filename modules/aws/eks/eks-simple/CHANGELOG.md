@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.0.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-simple-v1.0.0...eks-simple-v1.0.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* **root:** initial ([f09e105](https://github.com/thejaswitricon/terraform-semantic-release/commit/f09e105b1e1a78d5b44b0ec901761115e9cf49a6))
+* **root:** initial ([1f68454](https://github.com/thejaswitricon/terraform-semantic-release/commit/1f6845441dc1c27603432f73141e2d31f6f0a36a))
+
 # 1.0.0 (2023-07-17)
 
 
