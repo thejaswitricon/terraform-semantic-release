@@ -91,16 +91,10 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      - name: Update root CHANGELOG.md
+      - name: Fetch GitHub releases
         run: |
-          OUTPUT_FILE="$GITHUB_WORKSPACE/CHANGELOG.md"
-      
-          # Fetch the releases using the GitHub CLI
-          gh release list -L 50 --json name,body --repo ${{ github.repository }} | jq -r '.[] | "\n# Release: " + .name + "\n\n" + .body' > $OUTPUT_FILE
-      
-          cat $OUTPUT_FILE
-        continue-on-error: true
-        
+          releases=$(curl -s "https://api.github.com/repos/{owner}/{repo}/releases")
+          echo "$releases"
 
       # Step 6: Run semantic release
       - name: Semantic Release
