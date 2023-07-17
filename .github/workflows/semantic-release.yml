@@ -94,8 +94,6 @@ jobs:
       - name: Fetch GitHub releases
         run: |
           releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[].tag_name')
-      
-          # Write tags to CHANGELOG.md
           echo "## Changelog" > CHANGELOG.md
           for release in $releases; do
             echo "- $release" >> CHANGELOG.md
