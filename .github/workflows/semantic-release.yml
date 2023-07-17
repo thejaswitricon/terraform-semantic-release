@@ -91,11 +91,11 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      # - name: Fetch GitHub releases
-      #   run: |
-      #     releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")\n" + (.body // "") + "\n"')
-      #     echo "$releases" > $GITHUB_WORKSPACE/CHANGELOG.md
-      #     cat $GITHUB_WORKSPACE/CHANGELOG.md
+      - name: Fetch GitHub releases
+        run: |
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + " (" + .tag_name + ")\n" + (.body // "") + "\n"')
+          echo "$releases" > $GITHUB_WORKSPACE/CHANGELOG.md
+          cat $GITHUB_WORKSPACE/CHANGELOG.md
         
       
         
