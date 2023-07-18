@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.0.8](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.7...eks-cluster-v1.0.8) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([e2bfdc8](https://github.com/thejaswitricon/terraform-semantic-release/commit/e2bfdc8100b791045312bef56309a1e5c30889a3))
+* **root:** initial ([bcda4fc](https://github.com/thejaswitricon/terraform-semantic-release/commit/bcda4fc9f7ce7d094df308e07f7f7971ba1d5dd0))
+
 ## [1.0.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.6...eks-cluster-v1.0.7) (2023-07-18)
 
 
