@@ -150,18 +150,15 @@ jobs:
           echo "$releases" > CHANGELOG.md
           cat CHANGELOG.md
 
-      - name: Commit and Push Changes
-        uses: docker://alpine/git
+      - name: Push File to Git Repository
+        uses: docker://crazyuploader/github-actions-push-file:v1
         with:
-          args: >
-            sh -c "git config user.name 'GitHub Actions' &&
-                    git config user.email 'actions@github.com' &&
-                    git pull origin master &&
-                    git add CHANGELOG.md &&
-                    git commit -m 'Update CHANGELOG.md with releases' &&
-                    git push origin master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+          github_token: ${{ secrets.PAT_GITHUB2 }}
+          repository: thejaswitricon/terraform-semantic-release
+          branch: master
+          file: ./CHANGELOG.md 
+          commit_message: Update file.txt
+        
         
 
 
