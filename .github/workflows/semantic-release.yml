@@ -80,7 +80,11 @@ jobs:
           else
             APP_NAME=$(basename "$APP_DIRS")
             APP_NAME=$(echo "$APP_NAME" | awk '{print tolower($0)}')
-            echo "::set-output name=tag_format::${APP_NAME}-v\${version}"
+            # Split the directory path into an array using '/' as the delimiter
+            IFS="/" read -ra FOLDERS <<< "$APP_DIRS"
+            # Build the prefix by joining the second, third, and last elements of the array
+            PREFIX="${FOLDERS[1]}/${FOLDERS[2]}/${FOLDERS[-1]}"
+            echo "::set-output name=tag_format::${PREFIX}-v\${version}"
           fi
 
       # Step 5: Determine the path to the CHANGELOG.md file
