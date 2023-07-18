@@ -151,7 +151,7 @@ jobs:
           cat CHANGELOG.md
 
       - name: Push File to Git Repository
-        uses: docker://crazyuploader/github-actions-push-file:v1
+        uses: docker://ad-m/github-push-action:v1
         with:
           github_token: ${{ secrets.PAT_GITHUB2 }}
           repository: thejaswitricon/terraform-semantic-release
