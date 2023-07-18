@@ -92,21 +92,6 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      - name: Fetch GitHub Releases
-        id: fetch_releases
-        run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
-          echo "$releases" > ROOT_CHANGELOG.md
-          cat ROOT_CHANGELOG.md
-
-      - name: Commit and Push Changes
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add ROOT_CHANGELOG.md
-          git commit -m "Update ROOT_CHANGELOG.md with releases"
-          git push
-
       # Step 7: Run semantic release
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
@@ -130,6 +115,21 @@ jobs:
               'master'
             ]
         if: steps.changelog_path.outputs.path != ''
+
+      - name: Fetch GitHub Releases
+        id: fetch_releases
+        run: |
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
+          echo "$releases" > ROOT_CHANGELOG.md
+          cat ROOT_CHANGELOG.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add ROOT_CHANGELOG.md
+          git commit -m "Update ROOT_CHANGELOG.md with releases"
+          git push
 
       #Semantic release output summary
       - name: Semantic Release Output Summary
