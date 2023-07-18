@@ -154,14 +154,15 @@ jobs:
         uses: docker://alpine/git
         with:
           args: >
-            /bin/bash -c "git config user.name 'GitHub Actions' &&
-                          git config user.email 'actions@github.com' &&
-                          git pull origin master &&
-                          git add CHANGELOG.md &&
-                          git commit -m 'Update CHANGELOG.md with releases' &&
-                          git push origin master"
+            sh -c "git config user.name 'GitHub Actions' &&
+                    git config user.email 'actions@github.com' &&
+                    git pull origin master &&
+                    git add CHANGELOG.md &&
+                    git commit -m 'Update CHANGELOG.md with releases' &&
+                    git push origin master"
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+        
 
 
 # name: Semantic Release for Apps
