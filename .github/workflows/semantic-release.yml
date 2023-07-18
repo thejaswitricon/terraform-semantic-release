@@ -107,6 +107,7 @@ jobs:
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md with releases"
           git push
+          git pull
 
       # Step 7: Run semantic release
       - name: Semantic Release
