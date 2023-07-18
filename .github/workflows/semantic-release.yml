@@ -97,15 +97,15 @@ jobs:
         id: fetch_releases
         run: |
           releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
-          echo "$releases" > ROOT_CHANGELOG.md
-          cat ROOT_CHANGELOG.md
+          echo "$releases" > CHANGELOG.md
+          cat CHANGELOG.md
   
       - name: Commit and Push Changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add ROOT_CHANGELOG.md
-          git commit -m "Update ROOT_CHANGELOG.md with releases"
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG.md with releases"
           git push
 
       # Step 7: Run semantic release
