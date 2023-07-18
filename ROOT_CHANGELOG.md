@@ -1,3 +1,42 @@
+- eks-cluster-v1.0.3
+## [1.0.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.2...eks-cluster-v1.0.3) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([0790e81](https://github.com/thejaswitricon/terraform-semantic-release/commit/0790e8171b6e927b876257ac29bd902ff9237458))
+* **root:** initial ([13838c5](https://github.com/thejaswitricon/terraform-semantic-release/commit/13838c5252f657dea092d68f20c6ea87383bb26f))
+
+
+
+
+
+- eks-cluster-v1.0.2
+## [1.0.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.1...eks-cluster-v1.0.2) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([ff66ab3](https://github.com/thejaswitricon/terraform-semantic-release/commit/ff66ab3ff73e0e39540934dada29a5a0d6d27e19))
+* **root:** initial ([8ad1a14](https://github.com/thejaswitricon/terraform-semantic-release/commit/8ad1a14ae991486219490c7043b3d4dad44da106))
+
+
+
+
+
+- eks-cluster-v1.0.1
+## [1.0.1](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.0...eks-cluster-v1.0.1) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([178816d](https://github.com/thejaswitricon/terraform-semantic-release/commit/178816d0b6a3b9f8b8bc2c63ee6afd2b3e6ec57e))
+* **root:** initial ([0418e9d](https://github.com/thejaswitricon/terraform-semantic-release/commit/0418e9dd1cbd4295a240fa6e93917978dcf62b4b))
+
+
+
+
+
 - eks-cluster-v1.0.0
 # 1.0.0 (2023-07-18)
 
@@ -765,56 +804,3 @@
 * **root:** initial ([f4d01a0](https://github.com/thejaswitricon/terraform-semantic-release/commit/f4d01a0f30c63166016a04928b3832e95b00edf9))
 * **root:** initial ([ec57db3](https://github.com/thejaswitricon/terraform-semantic-release/commit/ec57db3151e8b5f5773fc6e5e954e380de3073f9))
 * **root:** initial ([be2595a](https://github.com/thejaswitricon/terraform-semantic-release/commit/be2595a7b0460eab68223185cb66bd3a86eafeb8))
-
-
-
-
-
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4
-## [1.1.4](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.4) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([8ced182](https://github.com/thejaswitricon/terraform-semantic-release/commit/8ced1820bfd750037004f4b5d4d37c2aa5994663))
-* **root:** initial ([c9d9775](https://github.com/thejaswitricon/terraform-semantic-release/commit/c9d97752ecae0fdb5841a80f077079c3b4c781ea))
-* **root:** initial ([ac042a1](https://github.com/thejaswitricon/terraform-semantic-release/commit/ac042a156b8bd6ad666bd12c1bf55cfc92ca7f78))
-* **root:** initial ([7812656](https://github.com/thejaswitricon/terraform-semantic-release/commit/78126564606aa9cfe056d6a44e9c134deeaa2e2e))
-* **root:** initial ([e9f4af4](https://github.com/thejaswitricon/terraform-semantic-release/commit/e9f4af468a568ff381ae5833e905399a96e20eb5))
-* **root:** initial ([b5c3fa1](https://github.com/thejaswitricon/terraform-semantic-release/commit/b5c3fa174d0193b051adea4f73b42bf515c69a48))
-
-
-
-
-
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3
-## [1.1.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.3) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([cb934e2](https://github.com/thejaswitricon/terraform-semantic-release/commit/cb934e2f240079a0b024c03d678b958448260670))
-* **root:** initial ([355311c](https://github.com/thejaswitricon/terraform-semantic-release/commit/355311c7510a517f2a7c6f5c6433e86433cf1f3b))
-* **root:** initial ([e1da005](https://github.com/thejaswitricon/terraform-semantic-release/commit/e1da0058f9d914117a587b972f4c46ef4dde1b1c))
-* **root:** initial ([f15a37c](https://github.com/thejaswitricon/terraform-semantic-release/commit/f15a37cfd06bf8a6613da826e85b4827a5c74f7a))
-* **root:** initial ([bd090b2](https://github.com/thejaswitricon/terraform-semantic-release/commit/bd090b23eff3c896c7a08d3e7f6d8194ba8ca9ba))
-* **root:** initial ([94f677e](https://github.com/thejaswitricon/terraform-semantic-release/commit/94f677e1bff4b2a9c6bfbc25b3ce2c9366a9e438))
-* **root:** initial ([61bb6bd](https://github.com/thejaswitricon/terraform-semantic-release/commit/61bb6bd1315dbce338df651a9574fcd5edabf363))
-* **root:** initial ([9cefe6b](https://github.com/thejaswitricon/terraform-semantic-release/commit/9cefe6b2c4aea5b0d9c6cc9b8a1b7b3084b8ef38))
-* **root:** initial ([15e8420](https://github.com/thejaswitricon/terraform-semantic-release/commit/15e8420eb5efb6f7842f0ec98b1ab20012136e14))
-* **root:** initial ([51eefba](https://github.com/thejaswitricon/terraform-semantic-release/commit/51eefbab6c2dfbb99e201ca220d4728e600306df))
-* **root:** initial ([411da81](https://github.com/thejaswitricon/terraform-semantic-release/commit/411da8146b878e1b33f39f15ca66ab27d523ec2e))
-* **root:** initial ([a2d20b0](https://github.com/thejaswitricon/terraform-semantic-release/commit/a2d20b05eb54839ff59ef79ad406d1e2fc1dc4ae))
-
-
-
-
-
-- modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2
-## [1.1.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.1...modules/aws/ecs-forgate/ecs-forgate-simple-v1.1.2) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([2a6d621](https://github.com/thejaswitricon/terraform-semantic-release/commit/2a6d621fc31f5c3e03bcf33fe638d052314adac4))
-* **root:** initial ([25ec64a](https://github.com/thejaswitricon/terraform-semantic-release/commit/25ec64a4218050b537c0ad1e59dfe39aff5387fb))
