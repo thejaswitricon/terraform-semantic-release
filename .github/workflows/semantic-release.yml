@@ -104,6 +104,9 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git pull
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG.md with releases"
           git push
 
       # Step 7: Run semantic release
