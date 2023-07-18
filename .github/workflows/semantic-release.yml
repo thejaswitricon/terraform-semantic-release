@@ -18,6 +18,7 @@ jobs:
         id: checkout
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT_GITHUB2 }}
 
       # Step 1: Get the name of the folder that had the changes
       - name: Get changed directories
