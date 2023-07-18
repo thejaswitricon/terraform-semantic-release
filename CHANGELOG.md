@@ -25,6 +25,33 @@
 
 
 
+- eks-cluster-v1.0.9
+## [1.0.9](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.8...eks-cluster-v1.0.9) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([32698be](https://github.com/thejaswitricon/terraform-semantic-release/commit/32698be843e9e6870bd635e3b933ae83cb919f3f))
+* **root:** initial ([a7020af](https://github.com/thejaswitricon/terraform-semantic-release/commit/a7020afd3e7f2fbbe927fabad9341830be726302))
+* **root:** initial ([8c0af10](https://github.com/thejaswitricon/terraform-semantic-release/commit/8c0af1009a07a6e3d8c00d76726376a3781d147f))
+
+
+
+
+
+- eks-cluster-v1.0.8
+## [1.0.8](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.7...eks-cluster-v1.0.8) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([e2bfdc8](https://github.com/thejaswitricon/terraform-semantic-release/commit/e2bfdc8100b791045312bef56309a1e5c30889a3))
+* **root:** initial ([bcda4fc](https://github.com/thejaswitricon/terraform-semantic-release/commit/bcda4fc9f7ce7d094df308e07f7f7971ba1d5dd0))
+
+
+
+
+
 - eks-cluster-v1.0.7
 ## [1.0.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.6...eks-cluster-v1.0.7) (2023-07-18)
 
@@ -97,6 +124,34 @@
 
 * **root:** initial ([ff66ab3](https://github.com/thejaswitricon/terraform-semantic-release/commit/ff66ab3ff73e0e39540934dada29a5a0d6d27e19))
 * **root:** initial ([8ad1a14](https://github.com/thejaswitricon/terraform-semantic-release/commit/8ad1a14ae991486219490c7043b3d4dad44da106))
+
+
+
+
+
+- eks-cluster-v1.0.11
+## [1.0.11](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.10...eks-cluster-v1.0.11) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([c2c9d77](https://github.com/thejaswitricon/terraform-semantic-release/commit/c2c9d77617dc7449752d1856b6d0b79068279078))
+* **root:** initial ([c0658ec](https://github.com/thejaswitricon/terraform-semantic-release/commit/c0658ecb7f2b72385cfdf90a0836927b3a338485))
+
+
+
+
+
+- eks-cluster-v1.0.10
+## [1.0.10](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.9...eks-cluster-v1.0.10) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([74e3386](https://github.com/thejaswitricon/terraform-semantic-release/commit/74e3386c3b4fde8e5ddbc2676fe8e3b7cb8cd015))
+* **root:** initial ([de8f6f6](https://github.com/thejaswitricon/terraform-semantic-release/commit/de8f6f6f443a1ea0b41478e6e6bedccd3279d392))
+* **root:** initial ([bf580dc](https://github.com/thejaswitricon/terraform-semantic-release/commit/bf580dcd360c2469d70a8c3abea8460cb5a0863d))
+* **root:** initial ([4e6c4bd](https://github.com/thejaswitricon/terraform-semantic-release/commit/4e6c4bd01ff2ef842676d4057943154d44d4fc3d))
 
 
 
@@ -682,129 +737,3 @@
 ### Features
 
 * **root:** add index.js file in the root ([1a95dd4](https://github.com/thejaswitricon/terraform-semantic-release/commit/1a95dd40b7cc144d63bd4462ce7d772cc9c75969))
-
-
-
-
-
-- modules/aws/ecs/ecs-simple/modules-v1.4.3
-## [1.4.3](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.2...modules/aws/ecs/ecs-simple/modules-v1.4.3) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([69a65d5](https://github.com/thejaswitricon/terraform-semantic-release/commit/69a65d5f00f0d07d6c1240e65c86a5154810725c))
-* **root:** initial ([5100b5f](https://github.com/thejaswitricon/terraform-semantic-release/commit/5100b5f8751833c7ef805676de7e17982e51cd07))
-* **root:** initial ([b201841](https://github.com/thejaswitricon/terraform-semantic-release/commit/b201841c973aa708c30cb6df81e97f9269adeecf))
-
-
-
-
-
-- modules/aws/ecs/ecs-simple/modules-v1.4.2
-## [1.4.2](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/modules-v1.4.1...modules/aws/ecs/ecs-simple/modules-v1.4.2) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([ce7b1c0](https://github.com/thejaswitricon/terraform-semantic-release/commit/ce7b1c0d6e230e8273d95b9d33c20d8dd34b04c8))
-* **root:** initial ([2497318](https://github.com/thejaswitricon/terraform-semantic-release/commit/2497318df2beabe6a279b522d85edcf79f77d7e4))
-* **root:** initial ([78c25d9](https://github.com/thejaswitricon/terraform-semantic-release/commit/78c25d903b6b15393a1525af45799057d5e21ce7))
-* **root:** initial ([7d8d7b7](https://github.com/thejaswitricon/terraform-semantic-release/commit/7d8d7b7a33bf8b1813a2b7569fbad482c9cbe0d0))
-* **root:** initial ([fa95aeb](https://github.com/thejaswitricon/terraform-semantic-release/commit/fa95aeb1baceed25d7373591fa37662fc58d5be2))
-* **root:** initial ([449c92b](https://github.com/thejaswitricon/terraform-semantic-release/commit/449c92be86617ad2c972773d84a21a0af4a474b4))
-* **root:** initial ([e12ee06](https://github.com/thejaswitricon/terraform-semantic-release/commit/e12ee06dd750e60e34d497c4d9b8d641ff9403a9))
-* **root:** initial ([156be96](https://github.com/thejaswitricon/terraform-semantic-release/commit/156be968f82f02ca01bdffc9614e87bf4a5960cb))
-* **root:** initial ([fbb504f](https://github.com/thejaswitricon/terraform-semantic-release/commit/fbb504f55dc888253a31f88678fde3f105003e4a))
-* **root:** initial ([081019c](https://github.com/thejaswitricon/terraform-semantic-release/commit/081019cfcd22c7830e25b644688436795e7a9376))
-* **root:** initial ([c601826](https://github.com/thejaswitricon/terraform-semantic-release/commit/c6018266f622aee4a6cf7a4be9b2bf2af0244194))
-* **root:** initial ([95e7746](https://github.com/thejaswitricon/terraform-semantic-release/commit/95e77461c5bd790b079f195a67a7cf202e37d4dd))
-* **root:** initial ([e83268d](https://github.com/thejaswitricon/terraform-semantic-release/commit/e83268d8f7ce6ff943d81c95724ca14232d8fbee))
-* **root:** initial ([e4596b5](https://github.com/thejaswitricon/terraform-semantic-release/commit/e4596b5eb25f0d330c9f08671096a985ded6a033))
-* **root:** initial ([794eb52](https://github.com/thejaswitricon/terraform-semantic-release/commit/794eb52d5a80ef387ba8f117d143f64f55464e5e))
-* **root:** initial ([0dd1c42](https://github.com/thejaswitricon/terraform-semantic-release/commit/0dd1c42324589025b2555776843afff995d04368))
-* **root:** initial ([65d65cd](https://github.com/thejaswitricon/terraform-semantic-release/commit/65d65cd05083b7509d0362df0a8d0897f7f47e5d))
-* **root:** initial ([598d34e](https://github.com/thejaswitricon/terraform-semantic-release/commit/598d34eae18274dc7059c1bbc90401ff7f6bc1af))
-* **root:** initial ([e7a6783](https://github.com/thejaswitricon/terraform-semantic-release/commit/e7a6783ee206fffdc103c604794b0519bb0c4109))
-* **root:** initial ([565465a](https://github.com/thejaswitricon/terraform-semantic-release/commit/565465a07450baa02d15ca310c0b125b41a1be51))
-* **root:** initial ([16ff6ce](https://github.com/thejaswitricon/terraform-semantic-release/commit/16ff6cef2b632191d905d99732c5309acfb3af4a))
-* **root:** initial ([6068ebc](https://github.com/thejaswitricon/terraform-semantic-release/commit/6068ebcfc81a2d69f019de6f8b9cdc73610de949))
-* **root:** initial ([87bc237](https://github.com/thejaswitricon/terraform-semantic-release/commit/87bc237f06eba3d966893b86b2569d8670bdc6c4))
-
-
-
-
-
-- modules/aws/ecs/ecs-simple/demo-v1.0.8
-## [1.0.8](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.7...modules/aws/ecs/ecs-simple/demo-v1.0.8) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([9fe4d6f](https://github.com/thejaswitricon/terraform-semantic-release/commit/9fe4d6ffcbb9b4f5c26bb931e1a46f8fb608e1da))
-* **root:** initial ([f948bb8](https://github.com/thejaswitricon/terraform-semantic-release/commit/f948bb8c045bcbe868b5e706b5948ed5bf529ffd))
-* **root:** initial ([e0a642b](https://github.com/thejaswitricon/terraform-semantic-release/commit/e0a642bf409cee3c80e0234b7210b973f19d45b3))
-* **root:** initial ([4f8b8cc](https://github.com/thejaswitricon/terraform-semantic-release/commit/4f8b8cca12c9ebc764951eca776e41226275b078))
-* **root:** initial ([f69295c](https://github.com/thejaswitricon/terraform-semantic-release/commit/f69295c7f7a2c2552764e9e4f31c9da9f99f7933))
-* **root:** initial ([5781f1c](https://github.com/thejaswitricon/terraform-semantic-release/commit/5781f1c39c91f1f93fcacfed2f33ed3cd2de2199))
-* **root:** initial ([365163b](https://github.com/thejaswitricon/terraform-semantic-release/commit/365163b1431ca7c10ac704255810676ed06c2117))
-* **root:** initial ([654d170](https://github.com/thejaswitricon/terraform-semantic-release/commit/654d17010facfddd3ef68d44d32c67deca6ca922))
-* **root:** initial ([2227252](https://github.com/thejaswitricon/terraform-semantic-release/commit/222725261d0bffd76d792f5219259cfae8d80213))
-* **root:** initial ([f66f8a4](https://github.com/thejaswitricon/terraform-semantic-release/commit/f66f8a4d6d5cb4d9f9db89dda9b6d268ed00ac2c))
-* **root:** initial ([f716e80](https://github.com/thejaswitricon/terraform-semantic-release/commit/f716e8085de70eb2de90832c11519cae2aba5c4a))
-* **root:** initial ([c726dd6](https://github.com/thejaswitricon/terraform-semantic-release/commit/c726dd65d303a89b8f50d56805bfc5cbcd236038))
-* **root:** initial ([6729ec3](https://github.com/thejaswitricon/terraform-semantic-release/commit/6729ec32840436822eeef1b369fc282aa283f244))
-* **root:** initial ([3c92ff1](https://github.com/thejaswitricon/terraform-semantic-release/commit/3c92ff15d358ce4eac671bf90e0140167b11c9da))
-* **root:** initial ([ea2e70d](https://github.com/thejaswitricon/terraform-semantic-release/commit/ea2e70da89bec58ca731d2e68fa4661569953784))
-* **root:** initial ([553aa81](https://github.com/thejaswitricon/terraform-semantic-release/commit/553aa8199e88834218816580f4cb87e8fcaf3532))
-* **root:** initial ([993df79](https://github.com/thejaswitricon/terraform-semantic-release/commit/993df796708425137b21ea247daddd2de2489ee2))
-* **root:** initial ([5b851d4](https://github.com/thejaswitricon/terraform-semantic-release/commit/5b851d40b9209b2cb1d38dc2a54f743132b0f16c))
-* **root:** initial ([fbb57b2](https://github.com/thejaswitricon/terraform-semantic-release/commit/fbb57b2ce96021efc73e0a14eaa1e52b20d1421d))
-* **root:** initial ([d097a89](https://github.com/thejaswitricon/terraform-semantic-release/commit/d097a89de3ecc4945ad64ca3084c8cd127bb1324))
-* **root:** initial ([f6c8d24](https://github.com/thejaswitricon/terraform-semantic-release/commit/f6c8d2410f9a0fc70cdb5beeeb5c8433eb538c2d))
-* **root:** initial ([dad6934](https://github.com/thejaswitricon/terraform-semantic-release/commit/dad693499bfe608c0771f25dcd3455872c2f611f))
-* **root:** initial ([f4d01a0](https://github.com/thejaswitricon/terraform-semantic-release/commit/f4d01a0f30c63166016a04928b3832e95b00edf9))
-* **root:** initial ([ec57db3](https://github.com/thejaswitricon/terraform-semantic-release/commit/ec57db3151e8b5f5773fc6e5e954e380de3073f9))
-* **root:** initial ([be2595a](https://github.com/thejaswitricon/terraform-semantic-release/commit/be2595a7b0460eab68223185cb66bd3a86eafeb8))
-* **root:** initial ([8ced182](https://github.com/thejaswitricon/terraform-semantic-release/commit/8ced1820bfd750037004f4b5d4d37c2aa5994663))
-* **root:** initial ([c9d9775](https://github.com/thejaswitricon/terraform-semantic-release/commit/c9d97752ecae0fdb5841a80f077079c3b4c781ea))
-* **root:** initial ([ac042a1](https://github.com/thejaswitricon/terraform-semantic-release/commit/ac042a156b8bd6ad666bd12c1bf55cfc92ca7f78))
-* **root:** initial ([7812656](https://github.com/thejaswitricon/terraform-semantic-release/commit/78126564606aa9cfe056d6a44e9c134deeaa2e2e))
-
-
-
-
-
-- modules/aws/ecs/ecs-simple/demo-v1.0.7
-## [1.0.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.6...modules/aws/ecs/ecs-simple/demo-v1.0.7) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([e9f4af4](https://github.com/thejaswitricon/terraform-semantic-release/commit/e9f4af468a568ff381ae5833e905399a96e20eb5))
-* **root:** initial ([b5c3fa1](https://github.com/thejaswitricon/terraform-semantic-release/commit/b5c3fa174d0193b051adea4f73b42bf515c69a48))
-* **root:** initial ([cb934e2](https://github.com/thejaswitricon/terraform-semantic-release/commit/cb934e2f240079a0b024c03d678b958448260670))
-* **root:** initial ([355311c](https://github.com/thejaswitricon/terraform-semantic-release/commit/355311c7510a517f2a7c6f5c6433e86433cf1f3b))
-* **root:** initial ([e1da005](https://github.com/thejaswitricon/terraform-semantic-release/commit/e1da0058f9d914117a587b972f4c46ef4dde1b1c))
-* **root:** initial ([f15a37c](https://github.com/thejaswitricon/terraform-semantic-release/commit/f15a37cfd06bf8a6613da826e85b4827a5c74f7a))
-* **root:** initial ([bd090b2](https://github.com/thejaswitricon/terraform-semantic-release/commit/bd090b23eff3c896c7a08d3e7f6d8194ba8ca9ba))
-* **root:** initial ([94f677e](https://github.com/thejaswitricon/terraform-semantic-release/commit/94f677e1bff4b2a9c6bfbc25b3ce2c9366a9e438))
-* **root:** initial ([61bb6bd](https://github.com/thejaswitricon/terraform-semantic-release/commit/61bb6bd1315dbce338df651a9574fcd5edabf363))
-* **root:** initial ([9cefe6b](https://github.com/thejaswitricon/terraform-semantic-release/commit/9cefe6b2c4aea5b0d9c6cc9b8a1b7b3084b8ef38))
-* **root:** initial ([15e8420](https://github.com/thejaswitricon/terraform-semantic-release/commit/15e8420eb5efb6f7842f0ec98b1ab20012136e14))
-* **root:** initial ([51eefba](https://github.com/thejaswitricon/terraform-semantic-release/commit/51eefbab6c2dfbb99e201ca220d4728e600306df))
-* **root:** initial ([411da81](https://github.com/thejaswitricon/terraform-semantic-release/commit/411da8146b878e1b33f39f15ca66ab27d523ec2e))
-* **root:** initial ([a2d20b0](https://github.com/thejaswitricon/terraform-semantic-release/commit/a2d20b05eb54839ff59ef79ad406d1e2fc1dc4ae))
-* **root:** initial ([2a6d621](https://github.com/thejaswitricon/terraform-semantic-release/commit/2a6d621fc31f5c3e03bcf33fe638d052314adac4))
-* **root:** initial ([25ec64a](https://github.com/thejaswitricon/terraform-semantic-release/commit/25ec64a4218050b537c0ad1e59dfe39aff5387fb))
-* **root:** initial ([feee6c4](https://github.com/thejaswitricon/terraform-semantic-release/commit/feee6c453b96d93a692382534d4ac7d327a78e7f))
-* **root:** initial ([461a0eb](https://github.com/thejaswitricon/terraform-semantic-release/commit/461a0ebf140cc9d666d99703a9c2ddea827e3f22))
-* **root:** initial ([10f865e](https://github.com/thejaswitricon/terraform-semantic-release/commit/10f865e85c8204d5f80b9a3cc66aa980dda4d90e))
-* **root:** initial ([a461c39](https://github.com/thejaswitricon/terraform-semantic-release/commit/a461c39d74a0e87da74ae12a296e46f6f122ec02))
-* **root:** initial ([592bf37](https://github.com/thejaswitricon/terraform-semantic-release/commit/592bf37ec5d2a9faaad3bfa7844375297b097f7c))
-* **root:** initial ([201b769](https://github.com/thejaswitricon/terraform-semantic-release/commit/201b769345a9aca0d0421cb0e36370e32ecbd03f))
-* **root:** initial ([69a65d5](https://github.com/thejaswitricon/terraform-semantic-release/commit/69a65d5f00f0d07d6c1240e65c86a5154810725c))
-* **root:** initial ([5100b5f](https://github.com/thejaswitricon/terraform-semantic-release/commit/5100b5f8751833c7ef805676de7e17982e51cd07))
-* **root:** initial ([b201841](https://github.com/thejaswitricon/terraform-semantic-release/commit/b201841c973aa708c30cb6df81e97f9269adeecf))
-* **root:** initial ([ce7b1c0](https://github.com/thejaswitricon/terraform-semantic-release/commit/ce7b1c0d6e230e8273d95b9d33c20d8dd34b04c8))
-* **root:** initial ([2497318](https://github.com/thejaswitricon/terraform-semantic-release/commit/2497318df2beabe6a279b522d85edcf79f77d7e4))
