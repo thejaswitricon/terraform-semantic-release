@@ -25,6 +25,18 @@
 
 
 
+- eks-cluster-v1.0.7
+## [1.0.7](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.6...eks-cluster-v1.0.7) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([eab43de](https://github.com/thejaswitricon/terraform-semantic-release/commit/eab43de8c21cd09f1ac292b59135430b71392f9f))
+
+
+
+
+
 - eks-cluster-v1.0.6
 ## [1.0.6](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-cluster-v1.0.5...eks-cluster-v1.0.6) (2023-07-18)
 
@@ -796,19 +808,3 @@
 * **root:** initial ([b201841](https://github.com/thejaswitricon/terraform-semantic-release/commit/b201841c973aa708c30cb6df81e97f9269adeecf))
 * **root:** initial ([ce7b1c0](https://github.com/thejaswitricon/terraform-semantic-release/commit/ce7b1c0d6e230e8273d95b9d33c20d8dd34b04c8))
 * **root:** initial ([2497318](https://github.com/thejaswitricon/terraform-semantic-release/commit/2497318df2beabe6a279b522d85edcf79f77d7e4))
-
-
-
-
-
-- modules/aws/ecs/ecs-simple/demo-v1.0.6
-## [1.0.6](https://github.com/thejaswitricon/terraform-semantic-release/compare/modules/aws/ecs/ecs-simple/demo-v1.0.5...modules/aws/ecs/ecs-simple/demo-v1.0.6) (2023-07-17)
-
-
-### Bug Fixes
-
-* **root:** initial ([78c25d9](https://github.com/thejaswitricon/terraform-semantic-release/commit/78c25d903b6b15393a1525af45799057d5e21ce7))
-* **root:** initial ([7d8d7b7](https://github.com/thejaswitricon/terraform-semantic-release/commit/7d8d7b7a33bf8b1813a2b7569fbad482c9cbe0d0))
-* **root:** initial ([fa95aeb](https://github.com/thejaswitricon/terraform-semantic-release/commit/fa95aeb1baceed25d7373591fa37662fc58d5be2))
-* **root:** initial ([449c92b](https://github.com/thejaswitricon/terraform-semantic-release/commit/449c92be86617ad2c972773d84a21a0af4a474b4))
-* **root:** initial ([e12ee06](https://github.com/thejaswitricon/terraform-semantic-release/commit/e12ee06dd750e60e34d497c4d9b8d641ff9403a9))
