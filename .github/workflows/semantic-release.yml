@@ -6,11 +6,6 @@ on:
       - master
     # paths:
     #   - 'modules/**'
-
-  workflow_run:
-    workflows: ["Semantic Release for Apps"]
-    types:
-      - completed
 permissions: write-all
 
 jobs:
