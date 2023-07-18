@@ -132,6 +132,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: release
     steps:
+
+      - name: Set Environment Variable
+        run: echo "SKIP_PUSH=1" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -152,7 +156,11 @@ jobs:
           git pull
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md with releases"
-          git push
+          if [ -z "$SKIP_PUSH" ]; then
+            git push
+          else
+            echo "Skipping git push as specified in the workflow."
+          fi
 
 
 # name: Semantic Release for Apps
