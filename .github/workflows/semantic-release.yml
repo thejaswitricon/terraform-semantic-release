@@ -100,14 +100,13 @@ jobs:
           echo "$releases" > CHANGELOG.md
           cat CHANGELOG.md
   
-      - name: Commit and Push Changes
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add CHANGELOG.md
-          git commit -m "Update CHANGELOG.md with releases"
-          git push
-          git pull
+      # - name: Commit and Push Changes
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git add CHANGELOG.md
+      #     git commit -m "Update CHANGELOG.md with releases"
+      #     git push
 
       # Step 7: Run semantic release
       - name: Semantic Release
