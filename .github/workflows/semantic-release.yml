@@ -150,17 +150,14 @@ jobs:
           echo "$releases" > CHANGELOG.md
           cat CHANGELOG.md
 
-      - name: Push File to Git Repository
-        uses: docker://ad-m/github-push-action:v1
-        with:
-          github_token: ${{ secrets.PAT_GITHUB2 }}
-          repository: thejaswitricon/terraform-semantic-release
-          branch: master
-          file: ./CHANGELOG.md 
-          commit_message: Update file.txt
-        
-        
-
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git pull
+          git add CHANGELOG.md
+          git commit -m "docs: update change log [skip ci]"
+          git push
 
 # name: Semantic Release for Apps
 
