@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.0.9](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-simple-v1.0.8...eks-simple-v1.0.9) (2023-07-18)
+
+
+### Bug Fixes
+
+* **root:** initial ([c8df16b](https://github.com/thejaswitricon/terraform-semantic-release/commit/c8df16b737648d23b2cb1aa1f6461b596a0273a9))
+* **root:** initial ([5c64d4d](https://github.com/thejaswitricon/terraform-semantic-release/commit/5c64d4d4f5de94a0b330d2b9b98f3c943ac97c20))
+* **root:** initial ([79b7e57](https://github.com/thejaswitricon/terraform-semantic-release/commit/79b7e57f703317d3569453de53a3b125ef5c9dd7))
+* **root:** initial ([4187b88](https://github.com/thejaswitricon/terraform-semantic-release/commit/4187b88e510a13f7b49c15f0886916202e1bc815))
+* **root:** initial ([c3725e1](https://github.com/thejaswitricon/terraform-semantic-release/commit/c3725e1f5d3bd6cb0b434a37532d9eb8d12e0d83))
+* **root:** initial ([2b27e33](https://github.com/thejaswitricon/terraform-semantic-release/commit/2b27e3313f06a9cefbc1f96c58aa1f5cea73d652))
+* update ([39fe25a](https://github.com/thejaswitricon/terraform-semantic-release/commit/39fe25ada429eaf03d4ce052c81ebc544d404240))
+
 ## [1.0.8](https://github.com/thejaswitricon/terraform-semantic-release/compare/eks-simple-v1.0.7...eks-simple-v1.0.8) (2023-07-18)
 
 
