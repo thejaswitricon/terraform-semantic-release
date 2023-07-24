@@ -102,7 +102,14 @@ jobs:
             echo "::set-output name=path::$CHANGELOG_PATH"
           fi
 
-      # Step 7: Run semantic release
+      # Step 6: Get commit messages for the current push
+      - name: Get commit messages
+        id: commit_messages
+        run: |
+          COMMIT_MESSAGES=$(git log --pretty=format:"%s" HEAD...HEAD^)
+          echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+
+        # Step 7: Run semantic release with custom commit messages
       - name: Semantic Release
         uses: docker://ghcr.io/codfish/semantic-release-action:v2
         id: semantic
@@ -114,8 +121,8 @@ jobs:
             ['@semantic-release/changelog', '@semantic-release/git']
           plugins: |
             [
-              '@semantic-release/commit-analyzer',
-              '@semantic-release/release-notes-generator',
+              ['@semantic-release/commit-analyzer', { "preset": "conventionalcommits", "releaseRules": [{ "type": "docs", "release": "patch" }] }],
+              ['@semantic-release/release-notes-generator', { "preset": "conventionalcommits" }],
               ['@semantic-release/changelog', { changelogTitle: '# CHANGELOG', "changelogFile": "${{ steps.changelog_path.outputs.path }}"}],
               '@semantic-release/github',
               ['@semantic-release/git', { "assets": ["${{ steps.changelog_path.outputs.path }}"] }]
@@ -147,22 +154,39 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PAT_GITHUB2 }}
 
+      # - name: Fetch Latest Release
+      #   id: fetch_latest_release
+      #   run: |
+      #     latest_release=$(curl -s "https://api.github.com/repos/thejaswitricon/semantic-release-monorepo/releases/latest")
+      #     release_body=$(echo "$latest_release" | jq -r '.body // ""')
+      
+      #     echo "$release_body" >> CHANGELOG.md
+      #     echo "" >> CHANGELOG.md
+      
+      #     cat CHANGELOG.md
+        
+      # Rest of the workflow steps...
       - name: Fetch GitHub Releases
         id: fetch_releases
         run: |
-          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/terraform-semantic-release/releases" | jq -r '.[] | "- " + .name + "\n" + (.body // "") + "\n"')
+          releases=$(curl -s "https://api.github.com/repos/thejaswitricon/semantic-release-monorepo/releases" | jq -r '.[] | "\n" + (.body // "") + "\n"')
           echo "$releases" > CHANGELOG.md
           cat CHANGELOG.md
 
       - name: Commit and Push Changes
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git pull
-          git add CHANGELOG.md
-          git commit -m "docs: update change log [skip ci]"
-          git push
-
+          CHANGED_DIRS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ 'BEGIN{OFS=FS} NF--')
+          if [[ -z $CHANGED_DIRS ]]; then
+            echo "No changes found in root directory. Skipping workflow."
+            exit 0
+          else
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git pull
+            git add CHANGELOG.md
+            git commit -m "docs: update change log [skip ci]"
+            git push
+          fi
 # name: Semantic Release for Apps
 
 # on:
